@@ -10,7 +10,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Roboto&display=swap" rel="stylesheet">
 <body>
     <div class="navbar p-0">
-        
+        <div class="topNav">
+            <span>UNITED NATIONS</span>
+            <span>INTELLIGENCE TASKFORCE</span>
+        </div>
+        <div class="absoluteMiddle">
+            <a href="../Homepage/"><img src="../Components/Navbar/img/Logo no bg no edge.png" alt="click here"></a>
+            <p><i id="typewriter">Together fight for victory, a free new world</i></p>
+        </div>
+        <div class="botNav">
+            <div class="leftSide">
+                <a href="../AboutUs/" idLan="navbar.left-side.aboutUs">About us</a>
+                <a href="../FAQ/" idLan="navbar.left-side.faq">FAQ</a>
+                <a href="../Divisions/" idLan="navbar.left-side.divisions">Divisions</a>
+                <a href="../Ranks/" idLan="navbar.left-side.divisions">Ranks</a>
+                <a href="../ContactUs/" idLan="navbar.left-side.contactUs">Contact us</a>
+            </div>
+            <div class="rightSide">
+                <div class="lan" id ="lan">
+                    <button class="lanbtn" id="lanbtnID"><img src="" id="flagCur" class="flagImg" alt=""><span id="curLan" class="lanSpan"></span><i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-list" id="dropdownList">
+                        <button id="lanButtonTemp"><div class="flagDrop"><img src="" id="flagTemp" class="flagImg" alt=""><span id="lanTemp" class="lanSpan"></span></div></button>
+                        <!-- <hr id="line">
+                        <button id="lanButtonBottom"><div class="flagDrop"><img src="" id="flag2" class="flagImg" alt=""><span id="botLan" class="lanSpan"></span></div></button>  
+
+                        REMAKE THIS TO DYNAMICALLY ADD COUNTRY FLAGS AND LAN OPTIONS-->
+                    </div>
+                </div>
+                <div class="line2"><span>|</span></div>
+                <div class="light-dark" id="themeSwitch">
+                    <span id="ldStatus"></span>
+                    <button class="ldbtn" id="LDbtn">
+                         <div class="btnOutside">
+                            <div class="btnInside"></div>
+                         </div>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="overlay" class="overlay">
