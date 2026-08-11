@@ -1,0 +1,95 @@
+:root {
+    --prim1: #ECF9FF;
+    --prim2: #1A272D;
+    --txt-color: #1A272D;
+    --bg-color: #ECF9FF;
+    --light:true;
+    --float-ld: left;
+    --ld-color:#F7C215;
+    --lan-shadow:#13223526;
+    --lan-hover:#c5ccd5;
+}
+
+/* ------------- */
+/* FONT CONFIG */
+/* ------------- */
+
+/* Roboto condensed */
+.roboto-condensed-light {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-condensed-regular {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-condensed-medium {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-condensed-semibold {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.roboto-condensed-bold {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-condensed-black {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+.roboto-condensed-light-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-condensed-regular-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-condensed-medium-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-condensed-semibold-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.roboto-condensed-bold-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-condensed-black-italic {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+/* Zen dots */
+.zen-dots-regular {
+  font-family: "Zen Dots", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

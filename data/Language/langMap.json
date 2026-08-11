@@ -1,0 +1,47 @@
+[
+    {
+        "lang": "en",
+        "label": "In English",
+        "flag": "/data/Language/countryFlags/Flag_of_England.svg.webp"
+    },
+    {
+        "lang": "da",
+        "label": "På Dansk",
+        "flag": "/data/Language/countryFlags/Flag_of_Denmark.svg.webp"
+    },
+    {
+        "lang": "de",
+        "label": "Deutsch",
+        "flag": "/data/Language/countryFlags/Flag_of_Germany.svg.webp"
+    },
+    {
+        "lang": "et",
+        "label": "Eesti Keeles",
+        "flag": "/data/Language/countryFlags/Flag_of_Estonia.svg.webp"
+    },
+    {
+        "lang": "sv",
+        "label": "På Svenska",
+        "flag": "/data/Language/countryFlags/Flag_of_Sweden.svg.webp"
+    },
+    {
+        "lang": "fi",
+        "label": "Suomeksi",
+        "flag": "/data/Language/countryFlags/Flag_of_Finland.svg.webp"
+    },
+    {
+        "lang": "es",
+        "label": "Español",
+        "flag": "/data/Language/countryFlags/Flag_of_the_Kingdom_of_Spain.svg.webp"
+    },
+    {
+        "lang": "vn",
+        "label": "Tiếng Việt",
+        "flag": "/data/Language/countryFlags/Flag_of_Vietnam.svg.webp"
+    },
+    {
+        "lang": "tl",
+        "label": "Sa Tagalog",
+        "flag": "/data/Language/countryFlags/Flag_of_the_Philippines.svg.webp"
+    }
+]

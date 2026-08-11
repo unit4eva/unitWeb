@@ -1,4 +1,4 @@
-import {translateData} from "../lang.js";
+import {translateData} from '/util/LanguageSwitching/lang.js';
 // Load file
 export function loadFile(file, id) {
     // gonna be honest chatGPT write this line

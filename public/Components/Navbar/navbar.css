@@ -1,0 +1,258 @@
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    color: var(--txt-color);
+}
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+.midpage {
+    /* width: 75rem; */
+    margin: 0 auto;
+    /* font-family: MulishSEMIBOLD; */
+    margin-top:3.5rem;
+}
+
+.navbar {
+    width:100%;
+    position: sticky;
+    top:0;
+    z-index: 10;
+}
+
+/* --------------------------- */
+/* START CHANGING BELOW HERE. DONT TOUCH ABOVE */
+/* --------------------------- */
+
+/* top nav */
+.topNav {
+    width: 100%;
+    height: 6rem;
+    position: relative;
+    padding: 1rem 0 0.2rem 0;
+    background-color: #009EDB;
+    color: #ECF9FF;
+    align-items: center;
+    display: flex;
+    /* justify-content: space-between; */
+    font-size: clamp(1rem, 4vw, 5rem);
+}
+
+.topNav h1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.floatTrapezoid {
+    position: relative;
+    flex-shrink: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    width: 22rem;
+    z-index: 3;
+}
+
+.floatTrapezoid::after {
+    content: "";
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 100%;
+    height: 5.5rem;
+    background-color: #009EDB;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    z-index: -1;
+}
+
+.floatTrapezoid img {
+    height: 9rem;
+    top: -1rem;
+    position: relative;
+    /* left: 75%;    */
+    /* right: 0; */
+}
+
+.floatTrapezoid a {
+    /* left: 75%; */
+    transform: translateX(75%);
+}
+
+/* bot nav */
+.botNav {
+    width: 100%;
+    height: 2.5rem;
+    background-color: #4666A6;
+    color: #ECF9FF;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftSide, .rightSide {
+    align-items: center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex: 1;
+}
+
+.botNav .leftSide {
+    gap: 20px;
+    justify-content: flex-end;
+    padding-right: 5rem;
+}
+
+.botNav .leftSide a {
+    display: inline-block;
+    color: #F3F7FF;
+    margin-right:1.3rem;
+    transition: 0.4s;
+    /* letter-spacing: 0.5px; */
+    font-size: clamp(0.5rem, 1w, 1.1rem);
+}
+
+.botNav .leftSide a:hover {
+    color: #7397e0;
+    transform: translateY(-10%);
+}
+
+.botNav .barrier {
+    width: 22rem;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.botNav .rightSide {
+    display:flex;
+    flex-wrap: wrap;
+    /* max-width: 10rem; */
+}
+/* Theme switching */
+
+.botNav .rightSide .line2 {
+    color: #E9F2FF;
+}
+.light-dark button{
+    border: none;
+    background: none;;
+}
+.light-dark span {
+    font-size: 1rem;
+    color: #E9F2FF;
+}
+.light-dark .btnOutside {
+    width: 2.5rem;
+    height: 1.25rem;
+    background-color: var(--bg-color);
+    border-radius: 2rem;
+    transform: translateY(20%);
+}
+.btnOutside .btnInside {
+    position: relative;
+    float:var(--float-ld);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: var(--ld-color);
+    /* top: ; */
+    /* transform: translateY(-50%); */
+    margin: 0.1rem 0.2rem 0 0.2rem;
+}
+.line2 span {
+    font-weight: 100;
+    color: #E9F2FF;
+}
+
+/* Language */
+.lan {
+    position: relative;
+    display: inline-block;
+    font-size:1rem;
+    align-items: center;
+}
+
+.lan img {
+    width:2rem;
+}
+
+.lan #lanList {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    cursor: pointer;
+    width: 11rem;
+    margin-top: 0.75rem;
+    background: var(--bg-color);
+    border-radius: 0.8rem;
+    /* border: 1px solid; */
+    padding: 0;
+    color: var(--txt-color);
+    box-shadow: 0 0.8rem 1.6rem var(--lan-shadow);
+}
+
+#lanList.active {
+    display: block;
+}
+
+#lanList li {
+    /* background-color: var(--bg-color); */
+    height: 2rem;
+    /* border: 0.05rem solid var(--txt-color); */
+}
+
+#lanButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #E9F2FF;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .topNav {
+        height: auto;
+        max-height: 3rem;
+        padding: 0.5rem;
+    }
+
+    .floatTrapezoid {
+        width: 120px;
+    }
+
+    .floatTrapezoid::after {
+        /* top: 85%; */
+        margin-top: -1rem;
+        height: 2.5rem;
+    }
+    
+    .floatTrapezoid img {
+        margin-top: 1rem;
+        top:0;
+        height: 4rem;
+    }
+
+    .floatTrapezoid a {
+        transform: translateX(50%);
+    }
+
+    .topNav h1 {
+        text-align: center;
+        font-size: 1rem;
+        /* padding: 0 5px; */
+    }
+}

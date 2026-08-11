@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html>
+    <!-- Connect other files -->
     <link rel="preload" href="../Components/Navbar/navbar.css" as="style">
     <link rel="preload" href="../Components/Navbar/navbar.js" as="script">
-    <link rel="preload" href="../lang.js" as="script">
+    <link rel="preload" href="/util/LanguageSwitching/lang.js" as="script">
     <link rel="stylesheet" href="../Components/shared.css">
     <link rel="stylesheet" href="../Components/Navbar/navbar.css">
+    <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&family=Zen+Dots&display=swap" rel="stylesheet">
+
 <body>
     <div class="navbar p-0">
-        
+            <div class="topNav">
+                <h1 class="roboto-condensed-semibold">UNITED NATIONS</h1>
+                <div class="floatTrapezoid">
+                    <div class="logo"><a href="../Homepage"><img src="../Components/Navbar/img/logoNoBgNoEdge.png" alt=""></a></div>
+                </div>
+                <h1 class="roboto-condensed-semibold">INTELLIGENCE TASKFORCE</h1>
+            </div>
+        <div class="botNav roboto-condensed-light">
+            <div class="leftSide">
+                <a href="">Propaganda</a>
+                <a href="">FAQ</a>
+                <a href="">Divisions</a>
+                <a href="">Ranks</a>
+                <a href="">Contact us</a>
+            </div>
+            <div class="barrier"></div>
+            <div class="rightSide">
+                <div class="lan">
+                    <button id="lanButton">
+                        <img src="/data/Language/countryFlags/Flag_of_England.svg.webp" alt="" class="flagImg" id="curFlag">
+                        <span id="curLan">In English</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                    <ul id="lanList"></ul>
+                </div>
+                <div class="line2"><span>|</span></div>
+                <div class="light-dark" id="themeSwitch">
+                    <span id="ldStatus"></span>
+                    <button class="ldbtn" id="LDbtn">
+                         <div class="btnOutside">
+                            <div class="btnInside"></div>
+                         </div>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="overlay" class="overlay">
