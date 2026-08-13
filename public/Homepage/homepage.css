@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+/* Parralax banners */
+
+.parralaxImg {
+    position: relative;
+    width: 100%;
+    height: 38rem;
+    /* height: 25rem; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    clip-path: polygon(
+        /* --- TOP EDGE --- */
+        0 0,                             /* Outer left starts pushed down */
+        calc(50% - 385px) 35px,              /* End of long shallow slope */
+        calc(50% - 345px) 110px,                 /* End of steep climb to top edge */
+        calc(50% + 345px) 110px,                 /* Flat center */
+        calc(50% + 385px) 35px,              /* Steep drop */
+        100% 0,                          /* Long shallow drop to outer right */
+        
+        /* --- BOTTOM EDGE --- */
+        100% calc(100% - 110px),             /* Outer right starts pushed up */
+        calc(50% + 385px) calc(100% - 75px), /* End of long shallow slope */
+        calc(50% + 345px) 100%,              /* End of steep drop to bottom edge */
+        calc(50% - 345px) 100%,              /* Flat center */
+        calc(50% - 385px) calc(100% - 75px), /* Steep climb */
+        0 calc(100% - 110px)                 /* Long shallow climb to outer left */
+    );
+    align-items: flex-end;
+    margin-top: -7rem;
+    /* padding-bottom: 10rem; */
+}
+
+.parralaxImg:nth-child(1) {
+    margin-top: 0;
+    clip-path: polygon(
+        /* --- TOP EDGE --- */
+        0 0,
+        100% 0,
+        /* --- BOTTOM EDGE --- */
+        100% calc(100% - 110px),             /* Outer right starts pushed up */
+        calc(50% + 385px) calc(100% - 75px), /* End of long shallow slope */
+        calc(50% + 345px) 100%,              /* End of steep drop to bottom edge */
+        calc(50% - 345px) 100%,              /* Flat center */
+        calc(50% - 385px) calc(100% - 75px), /* Steep climb */
+        0 calc(100% - 110px)                 /* Long shallow climb to outer left */
+    );
+}
+
+.parralaxImg img {
+    /* height: 38rem; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 1;
+}
+
+.parralaxImg .text {
+    position: relative;
+    z-index: 3;
+    color: white;
+}
+
+.parralaxImg .gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to top, rgba(0, 158, 219, 0.9) 0%, transparent 100%);
+    z-index: 2;
+}
+/* In-between */
+.inBetween {
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+    /* height: 25rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 0;
+}
+
+.bgLogo {
+    opacity: 10%;
+    width: 50rem;
+    position: absolute;
+    z-index: 0;
+}
+
+
+.inBetween > *:not(.bgLogo) {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+/* Banner 1 */
+#banner1 .text p {
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8);
+    line-height: 1;
+}
+
+#banner1 .text {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+#banner1 .text p:nth-child(1){
+    font-size: 4rem;
+}
+
+#banner1 .text p:nth-child(2){
+    font-size: 6rem;
+}
+
+/* In-between 1 */
+#between1 p {
+    width: 60%;
+    font-size: 2rem;
+}

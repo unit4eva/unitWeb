@@ -9,8 +9,8 @@
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@0;1&family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Zen+Dots&display=swap" rel="stylesheet">
 
 <body>
     <div class="navbar p-0">
@@ -21,32 +21,39 @@
                 </div>
                 <h1 class="roboto-condensed-semibold">INTELLIGENCE TASKFORCE</h1>
             </div>
-        <div class="botNav roboto-condensed-light">
-            <div class="leftSide">
-                <a href="">Propaganda</a>
-                <a href="">FAQ</a>
-                <a href="">Divisions</a>
-                <a href="">Ranks</a>
-                <a href="">Contact us</a>
-            </div>
-            <div class="barrier"></div>
-            <div class="rightSide">
-                <div class="lan">
-                    <button id="lanButton">
-                        <img src="/data/Language/countryFlags/Flag_of_England.svg.webp" alt="" class="flagImg" id="curFlag">
-                        <span id="curLan">In English</span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </button>
-                    <ul id="lanList"></ul>
+        <div class="botNav roboto-condensed-regular" id="botNav">
+            <button class="hamburger-button" id="hamburgerButton">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
+            <div class="mainMenu">
+                <div class="leftSide">
+                    <a href="" idLan="navbar.leftSide.propaganda">Propaganda</a>
+                    <a href="" idLan="navbar.leftSide.faq">FAQ</a>
+                    <a href="" idLan="navbar.leftSide.divisions">Divisions</a>
+                    <a href="" idLan="navbar.leftSide.ranks">Ranks</a>
+                    <a href="" idLan="navbar.leftSide.contactUs">Contact us</a>
                 </div>
-                <div class="line2"><span>|</span></div>
-                <div class="light-dark" id="themeSwitch">
-                    <span id="ldStatus"></span>
-                    <button class="ldbtn" id="LDbtn">
-                         <div class="btnOutside">
-                            <div class="btnInside"></div>
-                         </div>
-                    </button>
+                <div class="barrier"></div>
+                <div class="rightSide">
+                    <div class="lan">
+                        <button id="lanButton">
+                            <img src="/data/Language/countryFlags/Flag_of_England.svg.webp" alt="" class="flagImg" id="curFlag">
+                            <span id="curLan">In English</span>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                        <ul id="lanList"></ul>
+                    </div>
+                    <div class="line2"><span>|</span></div>
+                    <div class="light-dark" id="themeSwitch">
+                        <span id="ldStatus" idLan="navbar.theme.light">Light mode</span>
+                        <button class="ldbtn" id="LDbtn">
+                             <div class="btnOutside">
+                                <div class="btnInside"></div>
+                             </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,6 +63,6 @@
         <span idLan="">Random text</span>
     </div>
     <script src="../Components/Navbar/navbar.js" async defer type="module"></script>
-    <script src="../lang.js" async defer type="module"></script>
+    <script src="/util/LanguageSwitching/lang.js" async defer type="module"></script>
 </body>
 </html>

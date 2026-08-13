@@ -1,23 +1,28 @@
+import { translateData } from "/util/LanguageSwitching/lang.js";
+
+
 // Light dark
 var r = document.querySelector(':root');
 var lida = document.getElementById("LDbtn");
 var ldStatus = document.getElementById("ldStatus");
 
-function switchTheme(bgColor, txtColor, lanShadow, ldFloat, ldColor, lanHover, statusIndex) {
+async function switchTheme(bgColor, txtColor, lanShadow, ldFloat, ldColor, lanHover, idLan) {
     r.style.setProperty('--bg-color', bgColor);
     r.style.setProperty('--txt-color', txtColor);
     r.style.setProperty('--float-ld', ldFloat);
     r.style.setProperty('--ld-color', ldColor);
     r.style.setProperty('--lan-hover', lanHover);
     r.style.setProperty('--lan-shadow', lanShadow);
+    ldStatus.setAttribute("idLan", idLan)
+    await translateData(curLan)
 }
 
 function themeBool(l = true) {
     if (l) {
-        switchTheme("#ECF9FF", "#1A272D", "#13223526", "right", "#F7C215", "#c5ccd5");
+        switchTheme("#ECF9FF", "#1A272D", "#13223526", "right", "#F7C215", "#c5ccd5", "navbar.theme.light");
         // location.href='#light';
     } else {
-        switchTheme("#1A272D", "#ECF9FF", "#E9F2FF26", "left", "#E9F2FF", "#1f3046ff");
+        switchTheme("#1A272D", "#ECF9FF", "#E9F2FF26", "left", "#E9F2FF", "#1f3046ff", "navbar.theme.dark");
         // location.href='#dark';
     }
 }
@@ -67,13 +72,15 @@ function innitLangDropdown(data) {
     data.forEach(lang => {
         if (lang.lang === curLan) return
         const li = document.createElement('li')
-        li.innerHTML = `<img src="${lang.flag}"> ${lang.label}`
-        li.addEventListener('click', () => {
+        li.innerHTML = `<img src="${lang.flag}">
+                        <span>${lang.label}</span>`
+        li.addEventListener('click', async () => {
             curLan = lang.lang
             localStorage.setItem('selectedLanguage', curLan)
             innitLangDropdown(data)
             lanList.classList.remove('active')
             console.log('switched to ' + curLan)
+            await translateData(curLan)
         })
         langList.appendChild(li)
     });
@@ -97,6 +104,14 @@ const langLoadMain = async () => {
 
     console.log(langData)
     innitLangDropdown(langData)
+    await translateData(curLan)
 }
 
 langLoadMain()
+
+// Hamburger button
+var hamBtn = document.getElementById('hamburgerButton')
+var botNav = document.getElementById('botNav')
+hamBtn.onclick = function () {
+    botNav.classList.toggle('active')
+}

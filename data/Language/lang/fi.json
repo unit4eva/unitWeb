@@ -1,0 +1,21 @@
+{
+    "navbar": {
+        "leftSide": {
+            "propaganda": "Propagandaa",
+            "faq": "UKK",
+            "divisions" : "Divisioonat",
+            "ranks": "Arvoasteikko",
+            "contactUs": "Ota yhteyttä"
+        },
+        "theme": {
+            "light": "Valo tila",
+            "dark": "Tumma tila"
+        }
+    },
+    "footer": {
+        "credits": {
+            "designers": "Suunnittelija: Avy, Willie",
+            "developer": "Ohjelmistokehittäjän: Willie"
+        }
+    }
+}

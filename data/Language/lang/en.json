@@ -1,0 +1,21 @@
+{
+    "navbar": {
+        "leftSide": {
+            "propaganda": "Propaganda",
+            "faq": "FAQ",
+            "divisions" : "Divisions",
+            "ranks": "Ranks",
+            "contactUs": "Contact us"
+        },
+        "theme": {
+            "light": "Light mode",
+            "dark": "Dark mode"
+        }
+    },
+    "footer": {
+        "credits": {
+            "designers": "Designer: Avy, Willie",
+            "developer": "Developer: Willie"
+        }
+    }
+}
