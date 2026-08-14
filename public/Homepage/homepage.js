@@ -12,4 +12,7 @@ async function getCsvCol(path, colIdx) {
     return rows.map(row => row.split(',')[colIdx])
 }
 
-(async () => console.log(await getCsvCol("/data/members/memberList.csv", 3))) ()
+async function buildChart() {
+    const rawDates = await getCsvCol("/data/members/memberList.csv")
+    
+}
