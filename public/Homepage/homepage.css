@@ -11,6 +11,30 @@ body, html {
 /* Parralax banners */
 
 .parralaxImg {
+    --x-outer: 385px;
+    --x-inner: 345px;
+    --depth-max: 110px;
+    --depth-mid-top: 35px;
+    --depth-mid-bot: 75px;
+
+    clip-path: polygon(
+        /* --- TOP EDGE --- */
+        0 0, 
+        calc(50% - var(--x-outer)) var(--depth-mid-top), 
+        calc(50% - var(--x-inner)) var(--depth-max), 
+        calc(50% + var(--x-inner)) var(--depth-max), 
+        calc(50% + var(--x-outer)) var(--depth-mid-top), 
+        100% 0, 
+        
+        /* --- BOTTOM EDGE --- */
+        100% calc(100% - var(--depth-max)), 
+        calc(50% + var(--x-outer)) calc(100% - var(--depth-mid-bot)), 
+        calc(50% + var(--x-inner)) 100%, 
+        calc(50% - var(--x-inner)) 100%, 
+        calc(50% - var(--x-outer)) calc(100% - var(--depth-mid-bot)), 
+        0 calc(100% - var(--depth-max))
+    );
+    
     position: relative;
     width: 100%;
     height: 38rem;
@@ -18,44 +42,24 @@ body, html {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    clip-path: polygon(
-        /* --- TOP EDGE --- */
-        0 0,                             /* Outer left starts pushed down */
-        calc(50% - 385px) 35px,              /* End of long shallow slope */
-        calc(50% - 345px) 110px,                 /* End of steep climb to top edge */
-        calc(50% + 345px) 110px,                 /* Flat center */
-        calc(50% + 385px) 35px,              /* Steep drop */
-        100% 0,                          /* Long shallow drop to outer right */
-        
-        /* --- BOTTOM EDGE --- */
-        100% calc(100% - 110px),             /* Outer right starts pushed up */
-        calc(50% + 385px) calc(100% - 75px), /* End of long shallow slope */
-        calc(50% + 345px) 100%,              /* End of steep drop to bottom edge */
-        calc(50% - 345px) 100%,              /* Flat center */
-        calc(50% - 385px) calc(100% - 75px), /* Steep climb */
-        0 calc(100% - 110px)                 /* Long shallow climb to outer left */
-    );
+    align-items: center;
     align-items: flex-end;
 
     /* margin-top: -7rem; */
     z-index: 2;
-    padding: 9rem 0;
+    /* padding: 9rem 0; */
 }
 
 .parralaxImg:nth-child(1) {
     margin-top: 0;
     clip-path: polygon(
-        /* --- TOP EDGE --- */
-        0 0,
-        100% 0,
-        /* --- BOTTOM EDGE --- */
-        100% calc(100% - 110px),             /* Outer right starts pushed up */
-        calc(50% + 385px) calc(100% - 75px), /* End of long shallow slope */
-        calc(50% + 345px) 100%,              /* End of steep drop to bottom edge */
-        calc(50% - 345px) 100%,              /* Flat center */
-        calc(50% - 385px) calc(100% - 75px), /* Steep climb */
-        0 calc(100% - 110px)                 /* Long shallow climb to outer left */
+        0 0, 100% 0,
+        100% calc(100% - var(--depth-max)), 
+        calc(50% + var(--x-outer)) calc(100% - var(--depth-mid-bot)), 
+        calc(50% + var(--x-inner)) 100%, 
+        calc(50% - var(--x-inner)) 100%, 
+        calc(50% - var(--x-outer)) calc(100% - var(--depth-mid-bot)), 
+        0 calc(100% - var(--depth-max))
     );
 }
 
@@ -106,7 +110,7 @@ body, html {
     opacity: 0;
     margin-top: -7rem;
     z-index: 1;
-    transition: all 2s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .inBetween.open {
@@ -144,7 +148,7 @@ body, html {
 
 #banner1 .text {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 #banner1 .text p:nth-child(1){
@@ -340,4 +344,136 @@ body, html {
 
 .btnContainer .col:nth-child(3) {
     margin-top: 10rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .parralaxImg {
+        --x-outer: 90px;
+        --x-inner: 60px;
+        --depth-max: 60px;       
+        --depth-mid-top: 20px;   
+        --depth-mid-bot: 40px; 
+
+        height: 25rem;
+    }
+
+    .inBetween {
+        margin-top: -60px; 
+    }
+
+    /* Banner 1 */
+    #banner1 .text p:nth-child(1){
+        font-size: 2rem;
+    }
+
+    #banner1 .text p:nth-child(2){
+        font-size: 3rem;
+    }
+
+    /* Banner 2 */
+    #banner2 .text p:nth-child(1){
+        font-size: 2rem;
+    }
+
+    #banner2 .text p:nth-child(2){
+        font-size: 1rem;
+    }
+
+    /* Banner 3 */
+    #banner3 .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem; 
+        margin-top: -7rem;
+        
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    #banner3 .text1,
+    #banner3 .text2,
+    #banner3 .text3 {
+        text-align: center;
+        margin-top: 0; 
+        
+        width: 100%;
+    }
+
+    .bgLogo {
+        width: 20rem;
+    }
+
+    /* In-between 1 */
+    #between1 p {
+        /* width: 60%; */
+        font-size: 1.5rem;
+    }
+
+    #between1.open {
+        margin-top: 2rem;
+    }
+
+    /* In-between 3 */
+    .navigationContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding: 40px 0;
+        width: 100%;
+        margin-top: -5rem;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        padding-bottom: 10rem;
+    }
+
+    .navigationContainer .row {
+        width: 75%;
+        max-width: 900px;
+        height: 185px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        background-size: cover;
+        background-position: center;
+        /* background-color: rgba(0, 0, 0, 0.5);  */
+        /* background-blend-mode: multiply; */
+        
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        letter-spacing: 4px;
+        transition: 0.3s;
+    }
+
+    .navigationContainer .btnContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .navigationContainer .btnContainer .col {
+        width: 80%;
+        height: 120px;
+        
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+        letter-spacing: 4px;
+    }
+
+    .btnContainer .col:nth-child(2),
+    .btnContainer .col:nth-child(4) {
+        margin-top: 0rem;
+    }
+
+    .btnContainer .col:nth-child(3) {
+        margin-top: 0rem;
+    }
 }
