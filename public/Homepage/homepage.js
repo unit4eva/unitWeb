@@ -99,31 +99,37 @@ document.addEventListener('themeChanged', () => {
         }, 10)
     }
 })
+
+
 const gates = document.querySelectorAll('.inBetween');
 
-    const checkGates = () => {
-        // The standard tripwire (3/4 of the screen)
-        const triggerPoint = window.innerHeight * 0.65;
-        
-        // A 150px cushion to prevent the layout from bouncing
-        const bufferZone = 150; 
+const checkGates = () => {
+const triggerPoint = window.innerHeight * 0.75;
+const bufferZone = 150; 
 
-        gates.forEach(gate => {
-            const gateTop = gate.getBoundingClientRect().top;
-            
-            // Check if the gate is currently open
-            const isOpen = gate.classList.contains('open');
+// Checks how far down the user has scrolled. 
+// 10px gives a tiny buffer for phones that have "bouncy" scrolling.
+const isAtTop = window.scrollY < 10; 
 
-            // IF CLOSED: Open it when it crosses the normal tripwire
-            if (!isOpen && gateTop < triggerPoint) {
-                gate.classList.add('open');
-            } 
-            // IF OPEN: Don't close it until it passes the tripwire + the buffer zone
-            else if (isOpen && gateTop > (triggerPoint + bufferZone)) {
-                gate.classList.remove('open');
-            }
-        });
-    };
+gates.forEach(gate => {
+    const gateTop = gate.getBoundingClientRect().top;
+    const isOpen = gate.classList.contains('open');
 
-    window.addEventListener('scroll', checkGates);
-    checkGates();
+    // NEW RULE: If we are at the very top of the webpage, force close!
+    if (isAtTop) {
+        if (isOpen) gate.classList.remove('open');
+        return; // Stop running the rest of the math for this gate
+    }
+
+    // Normal scroll math
+    if (!isOpen && gateTop < triggerPoint) {
+        gate.classList.add('open');
+    } 
+    else if (isOpen && gateTop > (triggerPoint + bufferZone)) {
+        gate.classList.remove('open');
+    }
+});
+};
+
+window.addEventListener('scroll', checkGates);
+checkGates();
