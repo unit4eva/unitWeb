@@ -25,6 +25,8 @@ function themeBool(l = true) {
         switchTheme("#1A272D", "#ECF9FF", "#E9F2FF26", "left", "#E9F2FF", "#1f3046ff", "navbar.theme.dark");
         // location.href='#dark';
     }
+    const themeSignal = new CustomEvent('themeChanged');
+    document.dispatchEvent(themeSignal);
 }
 var light = localStorage.getItem("light") || true
 r.style.setProperty('--light', light);
