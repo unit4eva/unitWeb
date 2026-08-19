@@ -4,7 +4,7 @@ loadFile("../Components/Navbar/navbar.html", "navbar");
 // Load footer
 loadFile("../Components/Footer/footer.html", "footer");
 
-// Fetch csv: DEPRECATED, USE THE API INSTEAD
+// Fetch csv
 async function getCsvCol(path, colIdx) {
     const res = await fetch(path)
     const csv = await res.text()
@@ -12,34 +12,9 @@ async function getCsvCol(path, colIdx) {
     return rows.map(row => row.split(',')[colIdx])
 }
 
-// Fetch api
-const API_URL = "http://lpm.wispbyte.org:9325/api/members"; 
-const PROXY_URL = `https://corsproxy.io/?${encodeURIComponent(API_URL)}`;
-
-async function fetchWithProxy() {
-  try {
-    const response = await fetch(PROXY_URL);
-    
-    const contentType = response.headers.get("content-type");
-    if (!contentType || !contentType.includes("application/json")) {
-       throw new Error("no json");
-    }
-
-    const data = await response.json();
-    console.log("Data:", data);
-    return data
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return []
-  }
-}
-
-// Draw chart
 let chart
 async function buildChart() {
-    // const rawDates = await getCsvCol("/data/members/memberList.csv", 3)
-    const membersData = await fetchWithProxy()
-    const rawDates = membersData.members.map(member => member.date_joined)
+    const rawDates = await getCsvCol("/data/members/memberList.csv", 3)
     // console.log(rawDates)
     const monthlyCounts = {}
     rawDates.forEach(isoDate => {
