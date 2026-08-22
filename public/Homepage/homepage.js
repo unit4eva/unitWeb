@@ -4,7 +4,7 @@ loadFile("../Components/Navbar/navbar.html", "navbar");
 // Load footer
 loadFile("../Components/Footer/footer.html", "footer");
 
-// Fetch csv
+// Fetch csv: DEPRECATED, USE THE API INSTEAD
 async function getCsvCol(path, colIdx) {
     const res = await fetch(path)
     const csv = await res.text()
@@ -12,19 +12,41 @@ async function getCsvCol(path, colIdx) {
     return rows.map(row => row.split(',')[colIdx])
 }
 
+// Fetch api
+const API_URL = "/api/join-dates"; 
+
+async function fetchJoinDates() {
+  try {
+    const response = await fetch(API_URL);
+    
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+       throw new Error("Invalid content type received, expected JSON.");
+    }
+
+    const data = await response.json();
+    return data; // This is now directly your array of dates
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return [];
+  }
+}
+
+// Draw chart
 let chart
 async function buildChart() {
-    const rawDates = await getCsvCol("/data/members/memberList.csv", 3)
-    // console.log(rawDates)
-    const monthlyCounts = {}
+    const rawDates = await fetchJoinDates(); 
+    
+    const monthlyCounts = {};
     rawDates.forEach(isoDate => {
-        const date = new Date(isoDate)
-        if (isNaN(date.getTime())) return
-        const year = date.getFullYear()
-        const month = String(date.getMonth() + 1).padStart(2, '0')
+        const date = new Date(isoDate);
+        if (isNaN(date.getTime())) return;
+        
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
 
-        monthlyCounts[`${year}-${month}`] = (monthlyCounts[`${year}-${month}`] || 0) + 1
-    })
+        monthlyCounts[`${year}-${month}`] = (monthlyCounts[`${year}-${month}`] || 0) + 1;
+    });
 
     const sortedKeys = Object.keys(monthlyCounts).sort()
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
