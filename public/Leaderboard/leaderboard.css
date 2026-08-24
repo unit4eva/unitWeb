@@ -1,0 +1,401 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Main */
+#main {
+    min-height: 1200px;
+}
+/* ------------------------ */
+/* Podium */
+/* ------------------------ */
+.podium {
+    background: linear-gradient(to top, #009EDB 0%, rgba(0, 158, 219, 0) 25%), var(--bg-color);
+    padding: 5rem 1rem 0px 1rem;
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.podiumContainer {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10rem;
+    position: relative;
+    /* padding-bottom: 8px; */
+}
+
+/* blue line at the bottom */
+.podiumContainer::after {
+    content: '';
+    width: 105%;
+    position: absolute;
+    bottom: 0;
+    /* left: -20px; */
+    /* right: -20px; */
+    height: 4px;
+    background-color: #009EDB;
+    border-radius: 2px;
+}
+
+.podiumStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14rem;
+}
+
+.avtPodium {
+    width: 7rem;
+    height: 7rem;
+    background-color: #d9e3e8;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.namePodium {
+    font-size: 2rem;
+    color: var(--txt-color);
+    margin-bottom: 35px;
+}
+
+.podiumBlock {
+    width: 100%;
+    background-color: #009EDB;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.step1 .podiumBlock { height: 23rem; }
+.step2 .podiumBlock { height: 15rem; }
+.step3 .podiumBlock { height: 10rem; }
+
+/* Rank */
+
+.rankBadge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+/* Badge */
+.badge1 { background-color: #f7c344; color: #FF9F05; }
+.badge2 { background-color: #F2F2F2; color: #BCBCBC; }
+.badge3 { background-color: #de8358; color: #FFAE70; }
+
+.podiumStep.step1 .pointsPodium {
+    margin-top: -100px;
+}
+
+.pointsPodium {
+    font-size: 2.2rem;
+    line-height: 1.6rem;
+    /* font-weight: bold; */
+    /* margin-top: 10px; */
+    color: #ECF9FF;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+/* ------------------------ */
+/* Leaderboard
+/* ------------------------ */
+.leaderboard {
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ------------------------ */
+/* Search bar */
+/* ------------------------ */
+
+.searchContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust based on your layout needs */
+    margin: 15px 0;
+}
+
+.searchContainer i {
+    position: absolute;
+    left: 20px; /* Distance from the left border */
+    top: 50%;
+    transform: translateY(-50%); /* Centers the icon vertically */
+    color: #6c757d; /* Matches the placeholder text color */
+    font-size: 16px;
+    pointer-events: none; /* Allows clicks to pass through the icon to the input field */
+}
+.searchInput {
+    width: 100%;
+    padding: 14px 55px 14px 45px;
+    border: 2px solid var(--txt-color);
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--txt-color);
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Italicized placeholder */
+.searchInput::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Optional: Darken border when the user clicks the input */
+.searchInput:focus {
+    border-color: #4F6A9F; 
+}
+
+/* Circular button floating on the right */
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 8px; /* Spacing from the right border */
+    transform: translateY(-50%); /* Centers the button vertically */
+    background-color: #4F6A9F; /* Dark slate blue from the image */
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%; /* Makes the button a perfect circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #3b5080;
+}
+
+/* Arrow icon sizing */
+.search-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ------------------------ */
+/* Leaderboard list */
+/* ------------------------ */
+.list {
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.list-row {
+  display: grid;
+  grid-template-columns: 0.15fr 1fr 100px;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.list-header {
+  border-bottom: 2px solid #009EDB; /* The blue underline */
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: var(--txt-color);
+}
+
+.list-item {
+  background-color: #009EDB;
+  border-radius: 50px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 18px;
+}
+
+.col-points {
+  text-align: right;
+}
+
+.col-member {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.member-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #69aeb8; /* Placeholder for the image */
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.avtImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+/* ----------------- */
+/* Pagination */
+/* ----------------- */
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Space between Prev/Next buttons and the numbers */
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-top: 40px;
+    padding-bottom: 100px;
+}
+
+/* Inner layout just for the numbers */
+.page-numbers-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Reset default button styles */
+.page-btn, .page-num {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Page Numbers & Ellipses */
+.page-num {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: background-color 0.2s;
+}
+
+.page-num:hover:not(.ellipsis):not(.active) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* The active circle state */
+.page-num.active {
+    border-color: #000;
+    cursor: default;
+}
+
+.page-num.ellipsis {
+    cursor: default;
+    width: auto;
+    padding: 0 5px;
+}
+
+/* Prev/Next Buttons */
+.page-btn {
+    gap: 2px;
+}
+
+.page-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .podiumContainer {
+        gap: 2rem;
+    }
+
+    .podiumStep {
+        width:4rem;
+    }
+
+    .podiumBlock {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .avtPodium {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .namePodium {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .pointsPodium {
+        font-size: 0.8rem;
+        line-height: 0.3rem;
+    }
+
+    .rankBadge {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .step1 .podiumBlock { height: 15rem; }
+    .step2 .podiumBlock { height: 10rem; }
+    .step3 .podiumBlock { height: 6rem; }
+    .page-btn {
+        display: none;
+    }
+
+    .leaderboard {
+        width: 85%;
+    }
+
+    .list-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0 10px;
+    }
+
+    .col-member {
+        float: left;
+    }
+}

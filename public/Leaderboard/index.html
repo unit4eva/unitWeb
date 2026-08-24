@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/ce255f3d20.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UNIT - UNITED NATIONS INTELLIGENCE TASKFORCE</title>
+    <!-- <link rel="preload" href="./homepage.css" as="style">
+    <link rel="preload" href="./homepage.js" as="script"> -->
+    <link rel="stylesheet" href="./leaderboard.css">
+</head>
+<body class="iosevka-charon-regular">
+    <!-- Navbar -->
+    <section id="navbar"></section>
+    <!-- Main -->
+    <section id="main">
+        <div class="podium zen-dots-regular">
+            <div class="podiumContainer">
+                <!-- 2nd Place (Left) -->
+                <div class="podiumStep step2">
+                    <img src="" alt="avt1" class="avtPodium">
+                    <div class="namePodium roboto-condensed-semibold">'WILLIE'</div>
+                    <div class="podiumBlock">
+                        <div class="rankBadge badge2">2</div>
+                        <div class="pointsPodium">
+                            <p class="ptsNumPod">1200</p>
+                            <p>points</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1st Place (Center) -->
+                <div class="podiumStep step1">
+                    <img src="" alt="avt2" class="avtPodium">
+                    <div class="namePodium roboto-condensed-semibold">'WILLIE'</div>
+                    <div class="podiumBlock">
+                        <div class="rankBadge badge1">1</div>
+                        <div class="pointsPodium">
+                            <p class="ptsNumPod">1200</p>
+                            <p>points</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3rd Place (Right) -->
+                <div class="podiumStep step3">
+                    <img src="" alt="avt3" class="avtPodium">
+                    <div class="namePodium roboto-condensed-semibold">'WILLIE'</div>
+                    <div class="podiumBlock">
+                        <div class="rankBadge badge3">3</div>
+                        <div class="pointsPodium">
+                            <p class="ptsNumPod">1200</p>
+                            <p>points</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="leaderboard">
+            <h3 class="roboto-condensed-medium">UNIT Points Leaderboard</h3>
+            <div class="searchContainer">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Search by name..." class="searchInput" id="search">
+                <button class="search-button" aria-label="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="list">
+                <!-- Table Header -->
+                <div class="list-row list-header roboto-condensed-bold">
+                    <div class="col-rank">#Rank</div>
+                    <div class="col-member">Member</div>
+                    <div class="col-points">Points</div>
+                </div>
+                
+                <!-- Table Body / Items -->
+                <div class="list-body" id="listContainer">
+                    <!-- Placeholder Row -->
+                    <div class="list-row list-item" id="leaderboardSample">
+                        <div class="col-rank roboto-condensed-bold">#1</div>
+                        <div class="col-member">
+                            <div class="member-avatar">
+                                <img src="" alt="zuko" class="avtImg">
+                            </div>
+                            <span class="member-name roboto-condensed-regular">SSpc | 'ZUKO' zukoTheLastAvatar</span>
+                        </div>
+                        <div class="col-points roboto-condensed-regular">1200</div>
+                    </div>
+                    
+                </div>
+
+                <!-- Paging -->
+                 <div class="pageContainer" id="pageContainer">
+                    <button class="page-btn" id="prev-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        Previous
+                    </button>
+                    <div id="page-numbers" class="page-numbers-container"></div>
+                    <button class="page-btn" id="next-btn">
+                        Next
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <section id="footer"></section>
+    <script src="./leaderboard.js" async defer type="module"></script>
+    <script src="../../util/LanguageSwitching/lang.js" async defer type="module"></script>
+</body>
+</html>

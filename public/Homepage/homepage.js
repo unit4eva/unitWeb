@@ -13,7 +13,7 @@ async function getCsvCol(path, colIdx) {
 }
 
 // Fetch api
-const API_URL = "/api/join-dates"; 
+const API_URL = "/api/joinDates"; 
 
 async function fetchJoinDates() {
   try {
