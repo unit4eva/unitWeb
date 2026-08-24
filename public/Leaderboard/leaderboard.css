@@ -317,7 +317,7 @@ body, html {
 
 /* The active circle state */
 .page-num.active {
-    border-color: #000;
+    border-color: var(--txt-color);
     cursor: default;
 }
 
