@@ -1,0 +1,411 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Main */
+#main {
+    width: 100%;
+    margin:0;
+}
+
+#tip {
+    text-align: center;
+}
+
+.wrap {
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 12rem;
+}
+/* ------------------------ */
+/* Search bar */
+/* ------------------------ */
+
+.searchContainer {
+    position: relative;
+    width: 75%;
+    max-width: 600px; /* Adjust based on your layout needs */
+    margin: 15px auto;
+    margin-top: 5rem;
+}
+
+.searchContainer i {
+    position: absolute;
+    left: 20px; /* Distance from the left border */
+    top: 50%;
+    transform: translateY(-50%); /* Centers the icon vertically */
+    color: #6c757d; /* Matches the placeholder text color */
+    font-size: 16px;
+    pointer-events: none; /* Allows clicks to pass through the icon to the input field */
+}
+.searchInput {
+    width: 100%;
+    padding: 14px 55px 14px 45px;
+    border: 2px solid var(--txt-color);
+    border-radius: 50px;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--txt-color);
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Italicized placeholder */
+.searchInput::placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Optional: Darken border when the user clicks the input */
+.searchInput:focus {
+    border-color: #4F6A9F; 
+}
+
+/* Circular button floating on the right */
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 8px; /* Spacing from the right border */
+    transform: translateY(-50%); /* Centers the button vertically */
+    background-color: #4F6A9F; /* Dark slate blue from the image */
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%; /* Makes the button a perfect circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #3b5080;
+}
+
+/* Arrow icon sizing */
+.search-button svg {
+    width: 18px;
+    height: 18px;
+}
+/* Left sidebar */
+.mainSelection {
+    width: 30%;
+    padding: 20px;
+    border-right: 2px solid #009EDB;
+    display: flex;
+    flex-direction: column;
+}
+
+/* General selection */
+.generalSelection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+    width: 100%;
+}
+.general-btn {
+    width: 100%; 
+    box-sizing: border-box;
+}
+.general-btn:nth-child(1) {
+    grid-column: span 2;
+}
+
+.general-btn:nth-child(7) {
+    grid-column: span 2;
+}
+.general-btn, .specific-btn {
+    background: transparent;
+    border: 1.5px solid currentColor; 
+    border-radius: 8px;
+    padding: 4px 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.general-btn.active, .specific-btn.active {
+    background-color: color-mix(in srgb, currentColor 30%, transparent);
+    border-color: transparent;
+}
+
+.general-btn:hover, .specific-btn:hover {
+    background-color: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+/* --- Divider Line --- */
+.selection-divider {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #009EDB;
+    margin-left: 1.3rem;
+    opacity: 100%;
+}
+
+.specificSelection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.specific-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+}
+
+/* Member list */
+.membersResults {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultsHeader {
+    margin-bottom: 40px;
+}
+
+.rank-title {
+    /* color: #D31A60;  */
+    background-color: color-mix(in srgb, currentColor 30%, transparent);
+    padding: 12px 40px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+/* --- Members Grid & Cards --- */
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    gap: 50px;
+    justify-content: center;
+}
+
+
+.member-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.member-card img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border: 3px solid var(--cur-rank, #FFC107);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #2e2e2e;
+}
+
+/* ----------------- */
+/* Pagination */
+/* ----------------- */
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Space between Prev/Next buttons and the numbers */
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--txt-color);
+    margin-top: 40px;
+    padding-bottom: 100px;
+}
+
+/* Inner layout just for the numbers */
+.page-numbers-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Reset default button styles */
+.page-btn, .page-num {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Page Numbers & Ellipses */
+.page-num {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: background-color 0.2s;
+}
+
+.page-num:hover:not(.ellipsis):not(.active) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* The active circle state */
+.page-num.active {
+    border-color: var(--txt-color);
+    cursor: default;
+}
+
+.page-num.ellipsis {
+    cursor: default;
+    width: auto;
+    padding: 0 5px;
+}
+
+/* Prev/Next Buttons */
+.page-btn {
+    gap: 2px;
+}
+
+.page-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.floatingCard {
+    display: none; 
+    position: fixed;
+    z-index: 9999; 
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    margin: 0;
+
+    background-color: rgb(0, 143, 199, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 30px 30px 30px;
+    /* top: 200px; */
+    /* position: absolute; */
+    /* display: flex; */
+    width: 350px;
+    max-width: 90vw;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    border-radius: 12px;
+    border: 2px solid #ECF9FF;
+}
+.floatingCard .profileNickname {
+    color: #ECF9FF;
+    font-size: 2rem;
+}
+
+.floatingCard .profileAvatar img {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 3px solid #FFD700;
+}
+
+.floatingCard .profileQuote {
+    color: #ECF9FF;
+    font-size: 1.1rem;
+}
+
+.floatingCard .profileRoles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.floatingCard .profileRoles .rolePill {
+    /* flex-grow: 1; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    min-width: 20px;
+    background-color: color-mix(in srgb, currentColor 30%, transparent);
+    padding: 4px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.floatingCard .close-btn {
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 15px;
+    background: #CB181D;
+    border: none;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.7;
+    padding: 0;
+    line-height: 1;
+    border-radius: 30px;
+}
+
+.floatingCard .close-btn:hover {
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .wrap {
+        display: block;
+    }
+
+    .mainSelection {
+        width: 100%;
+        border: none;
+    }
+
+    .selection-divider {
+        margin-left: 0;
+    }
+
+    .floatingCard {
+        /* top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); */
+        /* pointer-events: auto;  */
+        width: 85vw; 
+    }
+
+    /* 3. Reveal the close button */
+    .floatingCard .close-btn {
+        display: block; 
+    }
+}

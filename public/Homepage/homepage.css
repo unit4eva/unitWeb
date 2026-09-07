@@ -284,7 +284,7 @@ body, html {
 .navigationContainer .row {
     width: 75%;
     max-width: 900px;
-    height: 125px;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -318,7 +318,7 @@ body, html {
 
 .navigationContainer .btnContainer .col {
     width: 135px;
-    height: 500px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;

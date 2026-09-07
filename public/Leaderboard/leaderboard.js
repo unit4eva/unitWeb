@@ -6,7 +6,7 @@ loadFile("../Components/Footer/footer.html", "footer");
 
 const API_URL = {
     "ptsLeaderboard": "/api/pointsLeaderboard?page=",
-    "searchUsers": "/api/searchUsers?q="
+    "searchUsers": "/api/searchUserPoint?q="
 
 }
 // Fetch api
@@ -48,7 +48,7 @@ async function populatePodium() {
         ptsPod.textContent = member.points.toLocaleString('de-DE'); 
         
         const avatarEl = stepElement.querySelector('.avtPodium');
-        avatarEl.src = `${member.avatar}`;
+        avatarEl.src = `${member.avatar}` || './img/some_dish.jpg';
     }
     })
 }
@@ -141,7 +141,7 @@ async function populateList(pageNum = 1) {
         nameElem.innerHTML = elem["display_name"]
 
         let avtImg = newElem.querySelector(".avtImg")
-        avtImg.src = elem["avatar"]
+        avtImg.src = elem["avatar"] || './img/some_dish.jpg'
 
         let pointsElem = newElem.querySelector(".col-points")
         pointsElem.innerHTML = elem["points"]

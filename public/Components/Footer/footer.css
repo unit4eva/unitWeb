@@ -74,6 +74,24 @@
   font-size:1.2rem;
 }
 
+.legal {
+    margin: 0 auto;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.legal a {
+    color: #ECF9FF;
+    transition: 0.4s;
+}
+.legal a:hover {
+    color: #c3d7ff;
+    transform: translateY(-10%);
+}
+
 @media (max-width: 850px) {
     .footer {
         clip-path: polygon(

@@ -20,14 +20,115 @@
     <section id="navbar"></section>
     <!-- Main -->
     <section id="main">
-        <div class="mainSelection">
-            <div class="generalSelection"></div>
-            <div class="specificSelection"></div>
+        <div class="searchContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Search by name..." class="searchInput" id="search">
+            <button class="search-button" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
         </div>
-        <div class="membersResults">
-
+        <p class="roboto-condensed-light-italic" id="tip">Tip: Hover or click a card to see more details</p>
+        <div class="wrap">
+            <div class="mainSelection roboto-condensed-regular">
+                <!-- GCO, SCO, JCO, etc-->
+                <div class="generalSelection"> 
+                    <button class="general-btn" style="color: #E67E22;">OVERSIGHT COMMITTEE</button>
+                    <button class="general-btn" style="color: #990F4B;">GCO</button>
+                    <button class="general-btn active" style="color: #E91E63;">SCO</button>
+                </div> 
+                <hr class="selection-divider">
+                <!-- Col, Lcol, Maj, etc -->
+                <div class="specificSelection">
+                    <button class="specific-btn">Col - Colonel</button>
+                    <button class="specific-btn active">LCol - Lieutenant Colonel</button>
+                    <button class="specific-btn">Maj - Major</button>
+                </div>
+            </div>
+            <div class="membersResults">
+                <div class="resultsHeader">
+                    <h2 class="rank-title zen-dots-regular">LCol - Lieutenant Colonel</h2>
+                </div>
+    
+                <div class="membersGrid roboto-condensed-medium">
+                    <div class="cardContainer">
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                        <div class="member-card">
+                            <img src="" alt="Member Avatar">
+                            <h3>'WILLIE'</h2>
+                        </div>
+                    </div>
+                     <!-- Paging -->
+                    <div class="pageContainer" id="pageContainer">
+                        <button class="page-btn" id="prev-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                            Previous
+                        </button>
+                        <div id="page-numbers" class="page-numbers-container"></div>
+                        <button class="page-btn" id="next-btn">
+                            Next
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <div class="floatingCard">
+        <button class="close-btn" id="closeFloatingCard">&times;</button>
+        <div class="profileNickname roboto-condensed-black">
+            WILLIE
+        </div>
+        <div class="profileAvatar">
+            <img src="./img/oulu_fish.jpg" alt="">
+        </div>
+        <div class="profileRoles roboto-condensed-medium">
+            <div class="rolePill" style="color: #E67E22;">
+                OCA - Oversight Committee Administrator
+            </div>
+            <div class="rolePill" style="color: #5E0000;">
+                CGen - Commander General
+            </div>
+            <div class="rolePill" style="color: #5E0000;">
+                eh
+            </div>
+            <div class="rolePill" style="color: #5E0000;">
+                Rando role
+            </div>
+        </div>
+        <div class="profileQuote roboto-condensed-regular">
+            “I am the superior fish”
+        </div>
+    </div>
     <!-- Footer -->
     <section id="footer"></section>
     <script src="./ranks.js" async defer type="module"></script>

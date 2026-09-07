@@ -1,0 +1,265 @@
+[
+    {
+        "rank": "OCC - Oversight Committee Chairman",
+        "color": "#E8BD0F"
+    },
+    {
+        "rank": "THE FOUNDER",
+        "color": "#E8BD0F"
+    },
+    {
+        "rank": "OCA - Oversight Committee Administrator",
+        "color": "#E8BD0F"
+    },
+    {
+        "rank": "OCM - Oversight Committee Member",
+        "color": "#E67E22"
+    },
+    {
+        "rank": "CGen - Commander-General",
+        "color": "#420B21"
+    },
+    {
+        "rank": "Gen - General",
+        "color": "#5E0B2E"
+    },
+    {
+        "rank": "LGen - Lieutenant-General",
+        "color": "#770C3A"
+    },
+    {
+        "rank": "MGen - Major-General",
+        "color": "#830F42"
+    },
+    {
+        "rank": "Brig - Brigadier",
+        "color": "#A21250"
+    },
+    {
+        "rank": "Col - Colonel",
+        "color": "#781834"
+    },
+    {
+        "rank": "LCol - Lieutenant Colonel",
+        "color": "#BB164D"
+    },
+    {
+        "rank": "Maj - Major",
+        "color": "#D11F5B"
+    },
+    {
+        "rank": "Cpt - Captain",
+        "color": "#57296C"
+    },
+    {
+        "rank": "Lt - Lieutenant",
+        "color": "#5F356E"
+    },
+    {
+        "rank": "2Lt - Second Lieutenant",
+        "color": "#9B59B6"
+    },
+    {
+        "rank": "WO1 - Warrant Officer Class One",
+        "color": "#206694"
+    },
+    {
+        "rank": "WO2 - Warrant Officer Class Two",
+        "color": "#185F8D"
+    },
+    {
+        "rank": "WO3 - Warrant Officer Class Three",
+        "color": "#1A75B3"
+    },
+    {
+        "rank": "SSgt - Staff Sergeant",
+        "color": "#1E7DBE"
+    },
+    {
+        "rank": "Sgt - Sergeant",
+        "color": "#2981BC"
+    },
+    {
+        "rank": "LSgt - Lance Sergeant",
+        "color": "#2991D6"
+    },
+    {
+        "rank": "SCpl - Staff Corporal",
+        "color": "#3D97D4"
+    },
+    {
+        "rank": "Cpl - Corporal",
+        "color": "#4893C4"
+    },
+    {
+        "rank": "LCpl - Lance Corporal",
+        "color": "#569ED1"
+    },
+    {
+        "rank": "SSpc - Senior Specialist",
+        "color": "#207743"
+    },
+    {
+        "rank": "Spc - Ordinary Specialist",
+        "color": "#126635"
+    },
+
+    {
+        "rank": "JSpc - Junior Specialist",
+        "color": "#175D34"
+    },
+    {
+        "rank": "SPte - Senior Private",
+        "color": "#186D3B"
+    },
+    {
+        "rank": "Pte - Ordinary Private",
+        "color": "#1E7743"
+    },
+    {
+        "rank": "JPte - Junior Private",
+        "color": "#26A25A"
+    },
+    {
+        "rank": "Rec - Recruit",
+        "color": "#2ECC71"
+    },
+
+    {
+        "rank": "UNIT Head Diplomat",
+        "color": ""
+    },
+    {
+        "rank": "UNIT Diplomat",
+        "color": ""
+    },
+    {
+        "rank": "Head Moderator",
+        "color": ""
+    },
+    {
+        "rank": "Senior Moderator",
+        "color": ""
+    },
+    {
+        "rank": "Moderator",
+        "color": ""
+    },
+    {
+        "rank": "Human Resources Department Head",
+        "color": ""
+    },
+    {
+        "rank": "Human Resources Department Personnel",
+        "color": ""
+    },
+    {
+        "rank": "Media Department Head",
+        "color": ""
+    },
+    {
+        "rank": "Media Department Personnel",
+        "color": ""
+    },
+    {
+        "rank": "RGE Department Head",
+        "color": ""
+    },
+    {
+        "rank": "RGE Department Deputy Head",
+        "color": ""
+    },
+    {
+        "rank": "RGE Department Builder",
+        "color": ""
+    },
+    {
+        "rank": "RGE Department Scripter",
+        "color": ""
+    },
+    {
+        "rank": "CBs - Commander of Broadsword",
+        "color": ""
+    },
+    {
+        "rank": "DCBs - Deputy Commander of Broadsword",
+        "color": ""
+    },
+    {
+        "rank": "Senior Broadsword Operative",
+        "color": ""
+    },
+    {
+        "rank": "Broadsword Operative",
+        "color": ""
+    },
+    {
+        "rank": "Junior Broadsword Operative",
+        "color": ""
+    },
+    {
+        "rank": "CAC - Commander of UNIT-LF AC",
+        "color": ""
+    },
+    {
+        "rank": "DCAC - Deputy Commander of UNIT-LF AC",
+        "color": ""
+    },
+    {
+        "rank": "Flight Officer",
+        "color": ""
+    },
+    {
+        "rank": "Pilot",
+        "color": ""
+    },
+    {
+        "rank": "Aircorps Cadet",
+        "color": ""
+    },
+    {
+        "rank": "CLp - Commander of UNIT-LARP",
+        "color": ""
+    },
+    {
+        "rank": "DCLp - Deputy Commander of UNIT-LARP",
+        "color": ""
+    },
+
+    {
+        "rank": "Adept LARP Troop",
+        "color": ""
+    },
+    {
+        "rank": "Trained LARP Troop",
+        "color": ""
+    },
+    {
+        "rank": "CAD - Commander Airbourne Division",
+        "color": ""
+    },
+    {
+        "rank": "DCAD - Deputy Commander of Airbourne Division",
+        "color": ""
+    },
+    {
+        "rank": "Jump Master",
+        "color": ""
+    },
+    {
+        "rank": "Paratrooper",
+        "color": ""
+    },
+    {
+        "rank": "Airbourne Cadet",
+        "color": ""
+    },
+    {
+        "rank": "",
+        "color": ""
+    },
+    {
+        "rank": "",
+        "color": ""
+    },
+]
