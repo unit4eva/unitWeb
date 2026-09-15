@@ -9,6 +9,23 @@
     --ld-color:#F7C215;
     --lan-shadow:#13223526;
     --lan-hover:#c5ccd5;
+
+    --octagon-xl: polygon(
+        35px 0, calc(100% - 35px) 0, 100% 35px, 100% calc(100% - 35px), 
+        calc(100% - 35px) 100%, 35px 100%, 0 calc(100% - 35px), 0 35px
+    );
+
+    --octagon-lg: polygon(
+        25px 0, calc(100% - 25px) 0, 100% 25px, 100% calc(100% - 25px), 
+        calc(100% - 25px) 100%, 25px 100%, 0 calc(100% - 25px), 0 25px
+    );
+    
+    --octagon-sm: polygon(
+        8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), 
+        calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px
+    );
+
+    
 }
 
 /* ------------- */
