@@ -1,8 +1,8 @@
-import {loadFile} from "../../Components/shared.js";
+import {loadFile} from "/Components/shared.js";
 // Load navbar
-loadFile("/public/Components/Navbar/navbar.html", "navbar");
+loadFile("/Components/Navbar/navbar.html", "navbar");
 // Load footer
-loadFile("/public/Components/Footer/footer.html", "footer");
+loadFile("/Components/Footer/footer.html", "footer");
 
 const API_URL = {
     "ptsLeaderboard": "/api/pointsLeaderboard?page=",

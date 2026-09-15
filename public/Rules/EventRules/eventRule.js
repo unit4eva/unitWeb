@@ -1,8 +1,8 @@
-import {loadFile} from "../Components/shared.js";
+import {loadFile} from "/Components/shared.js";
 // Load navbar
-loadFile("../Components/Navbar/navbar.html", "navbar");
+loadFile("/Components/Navbar/navbar.html", "navbar");
 // Load footer
-loadFile("../Components/Footer/footer.html", "footer");
+loadFile("/Components/Footer/footer.html", "footer");
 
 
 const sidebarLinks = document.querySelectorAll('.leftSidebar a');

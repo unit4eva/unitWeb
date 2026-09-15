@@ -1,36 +1,36 @@
 {
-    "Propaganda": "/public/Propaganda/",
+    "Propaganda": "/Propaganda/",
     "Documents": {
         "Uniform & Equipment": {
-            "Uniform": "/public/Documents/Uniform",
-            "Equipment": "/public/Documents/Equipment"
+            "Uniform": "/Documents/Uniform",
+            "Equipment": "/Documents/Equipment"
         },
         "Divisions & Departments": {
-            "Divisions": "/public/Documents/Divisions",
-            "Departments": "/public/Documents/Departments"
+            "Divisions": "/Documents/Divisions",
+            "Departments": "/Documents/Departments"
         },
         "Chain of commands": {
-            "Ranks": "/public/Documents/Ranks"
+            "Ranks": "/Documents/Ranks"
         },
         "Systems": {
-            "Ranking system": "/public/Documents/RankSys",
-            "Event point": "/public/Documents/EventPoint",
-            "Awards and Medals": "/public/Documents/AwardAndMedal",
-            "Licenses": "/public/Documents/Licenese"
+            "Ranking system": "/Documents/RankSys",
+            "Event point": "/Documents/EventPoint",
+            "Awards and Medals": "/Documents/AwardAndMedal",
+            "Licenses": "/Documents/Licenese"
         },
         "Alliance": {
-            "Ally": "/public/Documents/Ally"
+            "Ally": "/Documents/Ally"
         }
     },
     "Utility": {
         "User": {
-            "Leaderboard": "/public/Utility/Leaderboard"
+            "Leaderboard": "/Utility/Leaderboard"
         },
         "Statistics": {
-            "Basic trend": "/public/Utility/BasicTrend",
-            "Time Series Analysis": "/public/Utility/TimeSeries",
-            "Bayesian Regression": "/public/Utility/Bayes"
+            "Basic trend": "/Utility/BasicTrend",
+            "Time Series Analysis": "/Utility/TimeSeries",
+            "Bayesian Regression": "/Utility/Bayes"
         }
     },
-    "Join Us": "/public/JoinUs/"
+    "Join Us": "/JoinUs/"
 }
