@@ -69,7 +69,7 @@ function innitLangDropdown(data) {
     const curLanObj = data.find(l => l.lang == curLan)
     lanBtn.innerHTML = `<img src=${curLanObj.flag} alt="" class="flagImg" id="curFlag">
                         <span id="curLan">${curLanObj.label}</span>
-                        <i class="fa-solid fa-caret-down"></i>`
+                        <span class="arrow">&#9662;</span>`
     langList.innerHTML = ""
     data.forEach(lang => {
         if (lang.lang === curLan) return

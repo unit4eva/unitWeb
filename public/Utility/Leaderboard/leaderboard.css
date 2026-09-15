@@ -160,8 +160,8 @@ body, html {
 .searchInput {
     width: 100%;
     padding: 14px 55px 14px 45px;
-    border: 2px solid var(--txt-color);
-    border-radius: 50px;
+    border: 1px solid var(--txt-color);
+    border-radius: 5px;
     background-color: transparent;
     font-size: 16px;
     color: var(--txt-color);
@@ -233,7 +233,7 @@ body, html {
 
 .list-item {
   background-color: #009EDB;
-  border-radius: 50px;
+  border-radius: 6px;
   padding-top: 12px;
   padding-bottom: 12px;
   margin-bottom: 15px;

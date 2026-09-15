@@ -35,7 +35,26 @@ body {
 /* --------------------------- */
 /* START CHANGING BELOW HERE. DONT TOUCH ABOVE */
 /* --------------------------- */
+/* Scroll bar */
+::-webkit-scrollbar {
+    width: 16px;
+}
 
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* 3. Style the draggable thumb */
+::-webkit-scrollbar-thumb {
+    background-color: var(--txt-color);
+    border-radius: 10px;
+    
+    border: 5px solid transparent; 
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #009EDB;
+}
 /* top nav */
 .topNav {
     width: 100%;
@@ -146,20 +165,34 @@ body {
     position: absolute;
     top: 1.6rem;
     left: 0;
-    background-color: var(--bg-color); 
-    border-radius: 16px;
     padding: 24px;
     display: flex;
     gap: 40px;
-    box-shadow: 0px 8px 16px var(--lan-shadow);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: 0.3s ease;
     z-index: 1000;
     min-width: max-content; 
+    background-color: transparent; 
+    filter: drop-shadow(8px 8px 16px var(--lan-shadow));
 }
 
+.mega-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 4. Apply your background and clip-path to this inner layer */
+    background-color: var(--bg-color); 
+    clip-path: var(--octagon-lg);
+    
+    /* 5. Send this shape strictly behind the links and text */
+    z-index: -1; 
+}
 /* Hover triggers */
 .dropdown::after {
     content: '';
