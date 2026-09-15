@@ -117,3 +117,80 @@ var botNav = document.getElementById('botNav')
 hamBtn.onclick = function () {
     botNav.classList.toggle('active')
 }
+
+// Add navigation links
+fetch('/data/nav/navMap.json')
+        .then(response => response.json())
+        .then(data => buildNav(data))
+        .catch(error => console.error('Error loading navigation map:', error));
+
+function buildNav(navData) {
+    const navContainer = document.getElementById('navContainer');
+    navContainer.innerHTML = '';
+    for (const [key, value] of Object.entries(navData)) {
+        const navItem = document.createElement('div');
+        navItem.className = 'nav-item';
+
+        // Generate internationalization ID (e.g., "Propaganda" -> "navbar.leftside.propaganda")
+        const idLan = `navbar.leftside.${key.toLowerCase().replace(/\s+/g, '')}`;
+
+        if (typeof value === 'string') {
+            // Logic for Direct Links (e.g., Propaganda, Join Us)
+            const link = document.createElement('a');
+            link.href = value;
+            link.textContent = key;
+            link.setAttribute('idLan', idLan);
+            navItem.appendChild(link);
+        } 
+        else if (typeof value === 'object') {
+            // Logic for Dropdowns (e.g., Documents, Utility)
+            navItem.classList.add('dropdown');
+
+            // Create the dropdown trigger button
+            const dropBtn = document.createElement('a');
+            dropBtn.href = 'javascript:void(0)';
+            dropBtn.className = 'dropbtn';
+            dropBtn.innerHTML = `${key} <span class="arrow">&#9662;</span>`;
+            dropBtn.setAttribute('idLan', idLan);
+            navItem.appendChild(dropBtn);
+
+            // Create the Mega Menu container
+            const megaMenu = document.createElement('div');
+            megaMenu.className = 'mega-menu';
+
+            // Convert object to array to split into columns
+            const groups = Object.entries(value);
+            const maxGroupsPerCol = 2; // Adjust this to change column heights
+
+            for (let i = 0; i < groups.length; i += maxGroupsPerCol) {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'mega-col';
+
+                // Slice the array into chunks for each column
+                const columnChunk = groups.slice(i, i + maxGroupsPerCol);
+                
+                columnChunk.forEach(([groupName, links]) => {
+                    const groupDiv = document.createElement('div');
+                    groupDiv.className = 'mega-group';
+
+                    // Add category header
+                    const header = document.createElement('h3');
+                    header.textContent = groupName;
+                    groupDiv.appendChild(header);
+
+                    // Add category links
+                    for (const [linkName, linkHref] of Object.entries(links)) {
+                        const a = document.createElement('a');
+                        a.href = linkHref;
+                        a.textContent = linkName;
+                        groupDiv.appendChild(a);
+                    }
+                    colDiv.appendChild(groupDiv);
+                });
+                megaMenu.appendChild(colDiv);
+            }
+            navItem.appendChild(megaMenu);
+        }
+        navContainer.appendChild(navItem);
+    }
+}

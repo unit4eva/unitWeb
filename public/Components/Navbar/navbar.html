@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <!-- Connect other files -->
-    <link rel="preload" href="../Components/Navbar/navbar.css" as="style">
-    <link rel="preload" href="../Components/Navbar/navbar.js" as="script">
+    <link rel="preload" href="/public/Components/Navbar/navbar.css" as="style">
+    <link rel="preload" href="/public/Components/Navbar/navbar.js" as="script">
     <link rel="preload" href="/util/LanguageSwitching/lang.js" as="script">
-    <link rel="stylesheet" href="../Components/shared.css">
-    <link rel="stylesheet" href="../Components/Navbar/navbar.css">
+    <link rel="stylesheet" href="/public/Components/shared.css">
+    <link rel="stylesheet" href="/public/Components/Navbar/navbar.css">
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
             <div class="topNav">
                 <h1 class="roboto-condensed-semibold">UNITED NATIONS</h1>
                 <div class="floatTrapezoid">
-                    <div class="logo"><a href="../Homepage"><img src="../Components/Navbar/img/logoNoBgNoEdge.png" alt=""></a></div>
+                    <div class="logo"><a href="/public/Homepage"><img src="/public/Components/Navbar/img/logoNoBgNoEdge.png" alt=""></a></div>
                 </div>
                 <h1 class="roboto-condensed-semibold">INTELLIGENCE TASKFORCE</h1>
             </div>
@@ -28,12 +28,13 @@
                 <div class="hamburger-line"></div>
             </button>
             <div class="mainMenu">
-                <div class="leftSide">
-                    <a href="../Propaganda/" idLan="navbar.leftSide.propaganda">Propaganda</a>
+                <div class="leftSide" id="navContainer">
+                    <!-- <a href="../Propaganda/" idLan="navbar.leftSide.propaganda">Propaganda</a>
                     <a href="../Leaderboard/" idLan="navbar.leftSide.leaderboard">Leaderboard</a>
-                    <a href="../Divisions/" idLan="navbar.leftSide.divisions">Divisions</a>
+                    <a href="../DivDept/" idLan="navbar.leftSide.divisions">Divisions/Departments</a>
                     <a href="../Ranks/" idLan="navbar.leftSide.ranks">Ranks</a>
                     <a href="../JoinUs/" idLan="navbar.leftSide.joinUs">Join us</a>
+                    <a href="../Ally/" idLan="navbar.leftSide.joinUs">Ally</a> -->
                 </div>
                 <div class="barrier"></div>
                 <div class="rightSide">

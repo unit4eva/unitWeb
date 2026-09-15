@@ -1,0 +1,36 @@
+{
+    "Propaganda": "/public/Propaganda/",
+    "Documents": {
+        "Uniform & Equipment": {
+            "Uniform": "/public/Documents/Uniform",
+            "Equipment": "/public/Documents/Equipment"
+        },
+        "Divisions & Departments": {
+            "Divisions": "/public/Documents/Divisions",
+            "Departments": "/public/Documents/Departments"
+        },
+        "Chain of commands": {
+            "Ranks": "/public/Documents/Ranks"
+        },
+        "Systems": {
+            "Ranking system": "/public/Documents/RankSys",
+            "Event point": "/public/Documents/EventPoint",
+            "Awards and Medals": "/public/Documents/AwardAndMedal",
+            "Licenses": "/public/Documents/Licenese"
+        },
+        "Alliance": {
+            "Ally": "/public/Documents/Ally"
+        }
+    },
+    "Utility": {
+        "User": {
+            "Leaderboard": "/public/Utility/Leaderboard"
+        },
+        "Statistics": {
+            "Basic trend": "/public/Utility/BasicTrend",
+            "Time Series Analysis": "/public/Utility/TimeSeries",
+            "Bayesian Regression": "/public/Utility/Bayes"
+        }
+    },
+    "Join Us": "/public/JoinUs/"
+}

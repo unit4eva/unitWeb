@@ -1,14 +1,14 @@
-import {loadFile} from "../Components/shared.js";
+import {loadFile} from "/public/Components/shared.js";
 // Load navbar
-loadFile("../Components/Navbar/navbar.html", "navbar");
+loadFile("/public/Components/Navbar/navbar.html", "navbar");
 // Load footer
-loadFile("../Components/Footer/footer.html", "footer");
+loadFile("/public/Components/Footer/footer.html", "footer");
 
 // API URL
 var API_URL = {
-    getUserInfo: "/api/getUserInfoByRole?role_id=",
-    getRoleInfo: "/api/getRoleInfo?role_id=",
-    searchUsers: "/api/searchUserInfo?q="
+    getUserInfo: "https://unitweb.sytes.net/api/getUserInfoByRole?role_id=",
+    getRoleInfo: "https://unitweb.sytes.net/api/getRoleInfo?role_id=",
+    searchUsers: "https://unitweb.sytes.net/api/searchUserInfo?q="
 }
 
 const apiCache = {}
