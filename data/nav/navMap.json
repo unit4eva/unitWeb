@@ -28,8 +28,7 @@
         },
         "Statistics": {
             "Basic trend": "/Utility/BasicTrend",
-            "Time Series Analysis": "/Utility/TimeSeries",
-            "Bayesian Regression": "/Utility/Bayes"
+            "Regression": "/Utility/Regression"
         }
     },
     "Join Us": "/JoinUs/"

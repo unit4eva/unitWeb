@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Main */
+#main {
+    min-height: 1200px;
+}
+
+/* Indicator */
+.indicator .bar {
+    margin-top: 2rem;
+    width: 100%;
+    height: 0.25rem;
+    background: linear-gradient(90deg,rgba(255, 0, 0, 1) 0%, rgba(255, 234, 0, 1) 50%, rgba(0, 255, 38, 1) 100%);
+}
+
+.indicator .indicatorTxt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    font-size: 1.25rem;
+    color: var(--txt-color);
+}
+
+.bgLogo {
+    opacity: 4%;
+    width: 50rem;
+    position: absolute;
+    z-index: 0;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.trends > *:not(.bgLogo) {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.trends {
+    display: block;
+    width: 75%;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 6rem;
+    text-align: center;
+}
+
+.trends:nth-last-child(1) {
+    margin-bottom: 6rem;
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .bgLogo {
+        width: 20rem;
+    }
+}
