@@ -5,8 +5,8 @@ loadFile("/Components/Navbar/navbar.html", "navbar");
 loadFile("/Components/Footer/footer.html", "footer");
 
 const API_URL = {
-    "ptsLeaderboard": "/api/pointsLeaderboard?page=",
-    "searchUsers": "/api/searchUserPoint?q="
+    "ptsLeaderboard": "https://unitweb.sytes.net/api/pointsLeaderboard?page=",
+    "searchUsers": "https://unitweb.sytes.net/api/searchUserPoint?q="
 
 }
 // Fetch api

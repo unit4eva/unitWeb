@@ -1,0 +1,342 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Main */
+#main {
+    min-height: 800px;
+}
+
+#tip {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.pinboard-container {
+  width: 100%;
+  max-width: 80%; /* Constrain width to roughly match the crop proportion */
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 20px;
+  padding-top: 20px;
+  /* padding-bottom: 100px; */
+}
+
+/* 
+  The pattern block acts as a relative container for the absolutely 
+  positioned cards. Setting a fixed height ensures the next block 
+  starts right where the pattern repeats.
+*/
+.pattern-block {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Adjust this to control how close the repeating blocks are vertically */
+}
+
+/* Base styling for the polaroid cards */
+.card {
+  position: absolute;
+  width: 200px;
+  background-color: #f3fcff;
+  border-radius: 2px;
+  padding: 8px 8px 24px 8px; /* Extra padding on bottom for text */
+  /* Solid grey shadow to match the layered vector look */
+  box-shadow: 6px 12px 0px 0px rgba(67, 67, 67, 0.4); 
+  border: var(--txt-color) solid 1px;
+}
+
+/* The placeholder for the main image */
+.image-placebo {
+  background-color: #2671c6; /* Blue background matching the game thumbnail */
+  color: white;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Text styling */
+.card-text {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #1A272D;
+  line-height: 1.2;
+}
+
+/* Base pin styling */
+.pin {
+  position: absolute;
+  top: -6px; /* Hangs off the top edge slightly */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 1px 2px 0px 0px rgba(73, 73, 73, 0.4); 
+}
+
+/* Pin Colors */
+.bg-red    { background-color: #c41212; }
+.bg-black  { background-color: #3f3f3f; }
+.bg-purple { background-color: #791099; }
+.bg-yellow { background-color: #ad8a12; }
+.bg-green  { background-color: #229910; }
+.bg-blue  { background-color: #1e2f92; }
+.bg-orange  { background-color: #c15508; }
+.bg-gray  { background-color: #4c4c4c; }
+.bg-cyan  { background-color: #27ccbb; }
+.bg-darkGreen  { background-color: #25521e; }
+
+/* 
+  Specific Card Positioning & Rotation 
+  Recreating the layout of the 5 cards in the red box
+*/
+.card-red       { transform: rotate(-12deg); }
+.card-black     { transform: rotate(12deg); }
+.card-purple    { transform: rotate(-3deg); }
+.card-yellow    { transform: rotate(3deg); }
+.card-green     { transform: rotate(18deg); }
+.card-blue      { transform: rotate(-10deg); }
+.card-orange    { transform: rotate(-2deg); }
+.card-gray      { transform: rotate(15deg); }
+.card-cyan      { transform: rotate(22deg); }
+.card-darkGreen { transform: rotate(-18deg); }
+
+/* ----------------- */
+/* Pagination */
+/* ----------------- */
+.pageContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between Prev/Next buttons and the numbers */
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--txt-color);
+  margin-top: 40px;
+  padding-bottom: 100px;
+}
+
+/* Inner layout just for the numbers */
+.page-numbers-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Reset default button styles */
+.page-btn, .page-num {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Page Numbers & Ellipses */
+.page-num {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: background-color 0.2s;
+}
+
+.page-num:hover:not(.ellipsis):not(.active) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* The active circle state */
+.page-num.active {
+    border-color: var(--txt-color);
+    cursor: default;
+}
+
+.page-num.ellipsis {
+    cursor: default;
+    width: auto;
+    padding: 0 5px;
+}
+
+/* Prev/Next Buttons */
+.page-btn {
+    gap: 2px;
+}
+
+.page-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ---------------- */
+/* Fullscreen Modal  */
+/* ----------------- */
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Dark background overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensures it sits on top of all other elements */
+    /* Hidden by default with a fade transition */
+    opacity: 0;
+    pointer-events: none; 
+    gap: 20px;
+    transition: opacity 0.3s ease;
+}
+
+/* Class added by JS to show the modal */
+.fullscreen.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* The Image inside the modal */
+#fullscreen-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(88, 88, 88, 0.2);
+}
+
+#fullscreen-txt {
+  font-size: 30px;
+  color: white;
+  max-width: 80%;
+}
+
+/* The Close Button (X) */
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 45px;
+    font-family: sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none;
+    z-index: 1001;
+}
+
+.modal-close:hover {
+    color: #aaaaaa;
+}
+
+@media (min-width: 768px) {
+  .card-red {
+    top: 40px;
+    left: 2%;
+  }
+
+  .card-black {
+    top: 15px;
+    right: 53%;
+    z-index: 3;
+  }
+
+  .card-purple {
+    top: 150px;
+    left: 17%;
+    z-index: 2; /* Needs to sit on top of others slightly */
+  }
+
+  .card-yellow {
+    top: 270px;
+    left: 3%;
+  }
+
+  .card-green {
+    top: 300px;
+    right: 53%;
+    z-index: 3;
+  }
+
+  .card-blue {
+    top: 175px;
+    right: 40%;
+    z-index: 3;
+  }
+
+  .card-orange {
+    top: 12px;
+    right: 25%;
+    z-index: 2;
+  }
+
+  .card-gray {
+    top: 300px;
+    right: 27%;
+    z-index: 2;
+  }
+
+  .card-cyan {
+    top: 120px;
+    right: 10%;
+    z-index: 3;
+  }
+
+  .card-darkGreen {
+    top: 292px;
+    right: 8%;
+    z-index: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .pattern-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers all cards horizontally */
+    gap: 40px;            /* Adds spacing between the stacked cards */
+    height: auto;         /* Crucial: Removes fixed height so cards don't overflow */
+    padding: 20px 0;
+  }
+
+  .card {
+    position: relative;   /* Overrides the absolute positioning */
+    /* Reset any stray positioning */
+    top: auto; 
+    left: auto;
+    right: auto;
+  }
+
+  .page-btn:disabled {
+    opacity: 0;
+    cursor: not-allowed;
+  }
+}
