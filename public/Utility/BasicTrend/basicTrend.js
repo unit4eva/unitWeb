@@ -7,8 +7,9 @@ loadFile("/Components/Footer/footer.html", "footer");
 const API_URL = {
     "newMembers": 'https://unitweb.sytes.net/api/joinDates',
     "globalMembers": 'https://unitweb.sytes.net/api/regionStats',
-    "pointMembers": 'https://unitweb.sytes.net/api/pointsDistribution'
-
+    "pointMembers": 'https://unitweb.sytes.net/api/pointsDistribution',
+    "memberByRank": 'https://unitweb.sytes.net/api/getMemberCountByRank',
+    "getRoleInfo": "https://unitweb.sytes.net/api/getRoleInfo?role_id="
 }
 // Fetch api
 async function fetchStuff(url) {
@@ -320,3 +321,144 @@ document.addEventListener('themeChanged', () => {
 
 // Initialize the chart
 renderHistogram();
+
+var Ranks = {
+    "GCO": {
+        color: "#990F4B",
+        includedRanks: [
+            "1438936773668634746",
+            "1438936772024205392",
+            "1439590203634356315",
+            "1439590257099276299",
+            "1438936763430076627"
+        ]
+    },
+    "SCO": {
+        color: "#E91E63",
+        includedRanks: [
+            "1438936760515170354",
+            "1439589414069211286",
+            "1438934842606620804"
+        ]
+    },
+    "JCO": {
+        color: "#9B59B6",
+        includedRanks: [
+            "1438934675031855326",
+            "1438934676352794818",
+            "1439589100867813416"
+        ]
+    },
+    "HU": {
+        color: "#009EDB",
+        includedRanks: [
+            "1504536070736445590"
+        ]
+    },
+    "NCO": {
+        color: "#59A8DD",
+        includedRanks: [
+            "1438934492298346566",
+            "1439432983202365511",
+            "1455685894114906355",
+            "1438933820320518275",
+            "1438933243524153514",
+            "1452634746231328842",
+            "1455686179289825575",
+            "1438933201337978940",
+            "1438933144538710026"
+        ]
+    },
+    "ORDINARY SOLDIER": {
+        color: "#2ECC71",
+        includedRanks: [
+            "1455688490233757849",
+            "1455689403904163921",
+            "1438953224806596729",
+            "1438953085706703048",
+            "1438932542194712657",
+            "1438952941624230070",
+            "1452633724247216209"
+        ]
+    }
+}
+
+let standaloneRankChart;
+
+async function loadStandaloneRankChart() {
+    try {
+        const countsData = await fetchStuff(API_URL['memberByRank']);
+
+        const chartLabels = [];
+        const chartCounts = [];
+        const chartColors = [];
+        const orderedTasks = [];
+
+        // 1. Reverse the parent categories (ORDINARY SOLDIER -> OVERSIGHT COMMITTEE)
+        const reversedCategories = Object.entries(Ranks).reverse();
+
+        for (const [categoryName, rankInfo] of reversedCategories) {
+            const reversedSubRanks = [...rankInfo.includedRanks].reverse();
+            
+            for (const roleId of reversedSubRanks) {
+                const match = countsData.find(row => row.role_id === roleId); 
+                const count = match ? parseInt(match.member_count) : 0;
+
+                orderedTasks.push({
+                    roleId: roleId,
+                    count: count,
+                    color: rankInfo.color, 
+                    namePromise: fetchStuff(API_URL["getRoleInfo"] + roleId)
+                });
+            }
+        }
+
+        for (const task of orderedTasks) {
+            const roleInfo = await task.namePromise;
+            chartLabels.push(roleInfo.role_name); 
+            chartCounts.push(task.count);
+            chartColors.push(task.color);
+        }
+
+        // --- DYNAMIC Y-AXIS CAPPING ---
+        // Find the second highest count and add a 20% padding
+        const sortedCounts = [...chartCounts].sort((a, b) => b - a);
+        const maxMembers = Math.ceil((sortedCounts[2] || 10) * 1.2);
+
+        // 4. Render the chart
+        const ctx = document.getElementById('membersByRank').getContext('2d');
+        standaloneRankChart = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Personnel by each rank',
+                    data: chartCounts,
+                    backgroundColor: chartColors.map(color => color + "80"),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true, // Set this to TRUE
+                aspectRatio: 1.75,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Ranks' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Members' },
+                        beginAtZero: true,
+                        max: maxMembers, // Enforces the cap to prevent scale distortion
+                        ticks: { precision: 0 }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error("Failed to load standalone rank hierarchy:", error);
+    }
+}
+
+loadStandaloneRankChart();
