@@ -114,10 +114,10 @@
         \item $N$: The faction population
     \end{itemize}
     \textbf{Phase 4: Apply the new value and loop the process again}. After the initial guess, we now have the new value. We can now process these phases all over again for a certain iterations:
-    \[\beta_{c, j+1}^{(k)} = \beta_{f, j}^{(k)} \ - \ \eta \ G'(\beta_{f, j}^{(k)})\]
+    \[\beta_{c, j+1}^{(k)} = \beta_{f, j}^{(k)} \ - \ \eta \ G(\beta_{f, j}^{(k)})\]
     \begin{itemize}
         \item $j$: The current iteration. $j + 1$ means the next iteration
-        \item $G'(\beta_{f, j}^{(k)})$: The derivative of the gradient
+        \item $G(\beta_{f, j}^{(k)})$: The derivative of the gradient
         \item $\eta$: The learning rate (step size for each update)
     \end{itemize}
     \end{document}
