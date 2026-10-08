@@ -47,7 +47,7 @@ async function fetchUserByRole(roleId, page = 1) {
         
         const instantiatedMembers = rawData.data.map(user => {
             const divRankObj = {
-                airbourne: user.airbourne, 
+                airbourne: user.marine, 
                 aircorps: user.aircorps, 
                 broadsword: user.broadsword, 
                 diplomatic: user.diplomatic, 
@@ -539,7 +539,7 @@ async function fetchSuggestions(query) {
                 avatar: user.avatar,
                 mainRank: user.mainrank_id,
                 divRank: {
-                    airbourne: user.airbourne, 
+                    airbourne: user.marine, 
                     aircorps: user.aircorps, 
                     broadsword: user.broadsword, 
                     diplomatic: user.diplomatic, 

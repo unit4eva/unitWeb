@@ -30,6 +30,5 @@
             "Basic trend": "/Utility/BasicTrend",
             "Regression": "/Utility/Regression"
         }
-    },
-    "Join Us": "/JoinUs/"
+    }
 }

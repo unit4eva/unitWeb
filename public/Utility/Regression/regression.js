@@ -30,293 +30,130 @@ async function fetchStuff(url) {
   }
 }
 
-
-// fetchStuff(API_URL["globalMembers"])
-// fetchStuff(API_URL["pointMembers"])
-
-// Draw bar chart
-let joinDateChart
-async function buildChart() {
-    const rawDates = await fetchStuff(API_URL["newMembers"]); 
-    
-    const monthlyCounts = {};
-    rawDates.forEach(isoDate => {
-        const date = new Date(isoDate);
-        if (isNaN(date.getTime())) return;
-        
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-
-        monthlyCounts[`${year}-${month}`] = (monthlyCounts[`${year}-${month}`] || 0) + 1;
-    });
-
-    const sortedKeys = Object.keys(monthlyCounts).sort()
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-            
-    const labels = sortedKeys.map(key => {
-        const [year, month] = key.split('-')
-        return `${monthNames[parseInt(month) - 1]} ${year}`
-    })
-
-    const dataValues = sortedKeys.map(key => monthlyCounts[key]);
-    console.log(dataValues)
-    const ctx = document.getElementById('chartJoinDate').getContext('2d');
-    joinDateChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Amount of new members joined (excluded left members)',
-                data: dataValues,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: 'var(--txt-color)'
-                    }
-                }
-            },
-
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'var(--txt-color)'
-                    }
-                },
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Members',
-                        font: { weight: 'bold' },
-                        color: 'var(--txt-color)'
-                    },
-                    ticks: {
-                        color: 'var(--txt-color)'
-                    }
-                }
-            }
-        }
-    })
-}
-
-buildChart()
-
-document.addEventListener('themeChanged', () => {
-    if (joinDateChart) {
-        setTimeout(() => {
-            const rootStyle = getComputedStyle(document.documentElement)
-            let newTextColor
-            if (localStorage.getItem('light')) {
-                newTextColor = rootStyle.getPropertyValue('--txt-color').trim()
-                console.log("lighted chart")
-            } else {
-                console.log("tis")
-                newTextColor = '#1A272D'
-            }
-            joinDateChart.options.plugins.legend.labels.color = newTextColor;
-            joinDateChart.options.scales.x.ticks.color = newTextColor;
-            joinDateChart.options.scales.y.ticks.color = newTextColor;
-            joinDateChart.options.scales.y.title.color = newTextColor;
-
-            // Now redraw
-            joinDateChart.update();
-        }, 10)
-    }
+fetch('https://unitweb.sytes.net/api/getPredictionMap')
+.then(response => {
+  if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+  return response.json();
 })
+.then(data => {
+  const { rawDays, rawRanks, rawDivisions, uniqueDivs, gridX, gridY, zMatrix, maxDays, maxRank, test_days, test_rank, probDistribution, modelInsights } = data;
+  // const { rawDays, rawRanks, rawDivisions, uniqueDivs, gridX, gridY, zMatrix, maxDays, maxRank } = data;
+  const colorPalette = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2'];
+  const traces = [];
 
-// Draw map
-let map = null;
-let geoJson = null;
+  // 1. Render Background Regions
+  traces.push({
+      x: gridX,
+      y: gridY,
+      z: zMatrix,
+      type: 'contour',
+      colorscale: uniqueDivs.map((_, i) => [i / (uniqueDivs.length - 1 || 1), colorPalette[i % colorPalette.length]]),
+      opacity: 0.45,
+      zmin: 0,
+      zmax: uniqueDivs.length - 1,
+      showscale: false,
+      hoverinfo: 'skip',
+      contours: { coloring: 'heatmap' }
+  });
 
-function drawMap(geo, data) {
-    // 1. Initialize map only once
-    // console.log(data)
-    if (!map) {
-        map = L.map('chartMap', {
-            minZoom: 2
-        });
+  // 2. Render Member Dots
+  uniqueDivs.forEach((div, idx) => {
+      const x = [], y = [];
+      for (let i = 0; i < rawDays.length; i++) {
+          if (rawDivisions[i] === div) {
+              x.push(rawDays[i]);
+              y.push(rawRanks[i]);
+          }
+      }
+      traces.push({
+          x: x, y: y,
+          mode: 'markers',
+          type: 'scatter',
+          name: div,
+          marker: { 
+              size: 9, 
+              opacity: 0.9, 
+              color: colorPalette[idx % colorPalette.length],
+              line: { color: '#ffffff', width: 1 } 
+          }
+      });
+  });
 
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
-    }
+  // 3. Apply Initial Layout
+  const themeTextColor = getComputedStyle(document.documentElement).getPropertyValue('--txt-color').trim();
 
-    // 2. Clear previous GeoJSON layer if redrawing
-    if (geoJson) {
-        map.removeLayer(geoJson);
-    }
+  const layout = {
+      xaxis: { title: 'Days in Server', range: [0, maxDays], constrain: 'domain' },
+      yaxis: { title: 'Rank Weight', range: [0, maxRank], constrain: 'domain' },
+      hovermode: 'closest',
+      plot_bgcolor: 'rgba(255, 255, 255, 0.2)',
+      paper_bgcolor: 'transparent',
+      font: { color: 'rgb(132, 132, 132)' },
+      legend: {
+        orientation: 'h',
+        yanchor: 'top',
+        y: -0.2,            // Pushes it below the x-axis
+        xanchor: 'center',
+        x: 0.5
+      },
+      margin: { l: 60, r: 20, t: 30, b: 80 }
+  };
 
-    // 3. Find the maximum member count to scale the green gradient properly
-    const counts = Object.values(data).map(v => parseInt(v) || 0);
-    const maxVal = Math.max(...counts, 1);
+  Plotly.newPlot('chartJoinDate', traces, layout, {responsive: true});
 
-    // 4. Render GeoJSON with your interactive events & dynamic styling
-    geoJson = L.geoJson(geo, {
-        onEachFeature: (feature, layer) => {
-            const continentName = feature.properties.CONTINENT;
-            if (!continentName) return;
+  // --- ADD THIS TO PRINT PROBABILITIES ON THE SCREEN ---
+  const probContainer = document.getElementById('probDistribution');
+  if (probContainer) {
+      // Apply inline styles to format it neatly. You can move these to your CSS file later.
+      let htmlStr = `<div style="margin-top: 20px; padding: 20px; border: 1px solid rgba(128,128,128,0.2); border-radius: 8px; text-align: left;">`;
+      htmlStr += `<h4 style="margin-bottom: 15px; font-weight: bold;">Probability Breakdown (Average Profile: ${test_days} Days, ${test_rank} Rank Weight)</h4>`;
+      
+      // Print each division dynamically based on the highest probability
+      probDistribution.forEach(item => {
+          htmlStr += `<p style="margin: 5px 0; font-size: 1.1em;"><strong>${item.division}:</strong> ${item.probability}%</p>`;
+      });
+      
+      htmlStr += `</div>`;
+      probContainer.innerHTML = htmlStr;
+  }
+  // 4. Dynamic Theme Observer
+  const themeObserver = new MutationObserver(() => {
+      const updatedTextColor = getComputedStyle(document.documentElement).getPropertyValue('--txt-color').trim();
+      const update = { 'font.color': updatedTextColor };
+      
+      const chart = document.getElementById('chartJoinDate');
+      if (chart && chart.data) {
+          Plotly.relayout('chartJoinDate', update);
+      }
+  });
+  
+  const insightsContainer = document.getElementById('modelInsights');
+  if (insightsContainer && Array.isArray(modelInsights)) {
+      let insightHtml = `<div style="margin-top: 20px; padding: 20px; border: 1px solid rgba(128,128,128,0.2); border-radius: 8px; text-align: left;">`;
+      insightHtml += `<h4 style="margin-bottom: 15px; font-weight: bold;">Automated Model Insights</h4>`;
+      
+      // Loop through the array of strings and print them
+      modelInsights.forEach(textLine => {
+          insightHtml += `<p style="margin: 10px 0; font-size: 1.1em; line-height: 1.5;">${textLine}</p>`;
+      });
+      
+      insightHtml += `</div>`;
+      insightsContainer.innerHTML = insightHtml;
+  }
 
-            const value = data["[R] " + continentName] ?? 0;
-
-            layer.bindTooltip(`<b>${continentName}</b>: ${value} Personnel`);
-            layer.bindPopup(`<h2>${continentName}</h2><p><b>${value}</b> UNIT Personnel</p>`);
-
-            layer.on({
-                mouseover: (e) => {
-                    const l = e.target;
-                    l.setStyle({
-                        weight: 3,
-                        color: '#009EDB',
-                        fillOpacity: 0.3
-                    });
-                    l.bringToFront();
-                },
-                mouseout: (e) => {
-                    geoJson.resetStyle(e.target);
-                },
-                click: (e) => {
-                    if (typeof drawChart === 'function') {
-                        drawChart(continentName);
-                    }
-                }
-            });
-        },
-        style: (feature) => {
-            const continentName = feature.properties.CONTINENT;
-            const value = data["[R] " + continentName] ?? 0;
-
-            // Scale hue from 0 (Red) to 120 (Pure Green)
-            let hslHue = (value / maxVal) * 120;
-            if (hslHue > 120) hslHue = 120;
-
-            return {
-                fillColor: `hsl(${hslHue}, 80%, 45%)`, // The more members, the more green
-                color: '#333333',                      // Border color
-                weight: 1,
-                fillOpacity: 0.5
-            };
-        }
-    }).addTo(map);
-
-    map.fitBounds(geoJson.getBounds());
-}
-
-// Fetch helper for continents.json
-async function getGeoJson() {
-    try {
-        const response = await fetch('./continents.json');
-        if (!response.ok) throw new Error(`Status: ${response.status}`);
-        return await response.json();
-    } catch (error) {
-        console.error("Error loading GeoJSON:", error.message);
-    }
-}
-
-// Main execution function
-async function initRegionMap() {
-    try {
-        // Fetch GeoJSON and Region Stats concurrently
-        const [geo, statsResponse] = await Promise.all([
-            getGeoJson(),
-            fetchStuff(API_URL["globalMembers"])
-        ]);
-
-        const statsData = await statsResponse;
-
-        // Convert API array to a key-value dictionary: { "Europe": 15, "Asia": 42, ... }
-        const dataMap = {};
-        statsData.forEach(item => {
-            dataMap[item.region] = item.member_count;
-        });
-
-        drawMap(geo, dataMap);
-    } catch (error) {
-        console.error("Failed to initialize region map:", error);
-    }
-}
-
-// Call on load
-initRegionMap();
-
-// Distribution histogram
-let histogramChart
-async function renderHistogram() {
-    try {
-        // const response = await ;
-        const data = await fetchStuff(API_URL["pointMembers"]);
-
-        // Separate our coordinates
-        const labels = data.map(row => row.points);
-        const counts = data.map(row => parseInt(row.member_count) || 0);
-
-        const sortedCounts = [...counts].sort((a, b) => b - a);
-        const maxMembers = Math.ceil((sortedCounts[1] || 10) * 1.2);
-
-        const ctx = document.getElementById('pointsHistogram').getContext('2d');
-        
-        histogramChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Number of Members',
-                    data: counts,
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    barPercentage: 1.0, // Removes gap between bars
-                    categoryPercentage: 1.0 // Removes gap between categories
-                }]
-            },
-            options: {
-                responsive: true,
-                // maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        title: { display: true, text: 'Points' }
-                    },
-                    y: {
-                        title: { display: true, text: 'Members' },
-                        beginAtZero: true,
-                        max: maxMembers,
-                        ticks: { precision: 0 } // Prevents decimals on member counts
-                    }
-                }
-            }
-        });
-    } catch (error) {
-        console.error("Error loading histogram data:", error);
-    }
-}
-
-document.addEventListener('themeChanged', () => {
-    if (histogramChart) {
-        setTimeout(() => {
-            const rootStyle = getComputedStyle(document.documentElement)
-            let newTextColor
-            if (localStorage.getItem('light')) {
-                newTextColor = rootStyle.getPropertyValue('--txt-color').trim()
-            } else {
-                newTextColor = '#1A272D'
-            }
-            histogramChart.options.plugins.legend.labels.color = newTextColor;
-            histogramChart.options.scales.x.ticks.color = newTextColor;
-            histogramChart.options.scales.y.ticks.color = newTextColor;
-            histogramChart.options.scales.y.title.color = newTextColor;
-
-            // Now redraw
-            histogramChart.update();
-        }, 10)
-    }
+  // Observe the body or root HTML element for theme class changes
+  themeObserver.observe(document.body, { 
+      attributes: true, 
+      attributeFilter: ['class', 'data-theme', 'theme'] 
+  });
 })
+.catch(err => console.error("Error loading prediction map:", err));
 
-// Initialize the chart
-renderHistogram();
+var latexDiv = document.getElementById('latexDiv')
+const latexText = latexDiv.querySelector('.latexText');
+const arrow = document.getElementById('arrowExplain');
+
+latexDiv.addEventListener(("click"), function() {
+  latexText.classList.toggle('active')
+  arrow.classList.toggle('active');
+})

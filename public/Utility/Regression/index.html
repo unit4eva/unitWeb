@@ -18,7 +18,12 @@
     <title>UNIT - UNITED NATIONS INTELLIGENCE TASKFORCE</title>
     <!-- <link rel="preload" href="./homepage.css" as="style">
     <link rel="preload" href="./homepage.js" as="script"> -->
-    <link rel="stylesheet" href="./basicTrend.css">
+    <link rel="stylesheet" href="./regression.css">
+    <!-- Load Plotly from CDN directly in the browser -->
+    <script type="module">
+        import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
+        customElements.define("latex-js", LaTeXJSComponent)
+    </script>
 </head>
 <body class="iosevka-charon-regular">
     <!-- Navbar -->
@@ -27,33 +32,105 @@
     <section id="main">
         <div class="trends">
             <img src="img/unitBlueNoTxt.png" alt="" class="bgLogo">
-            <h3 class="roboto-condensed-semibold">Bar chart of amount of new members joined per month</h3>
-            <canvas id="chartJoinDate"></canvas>
-            <!-- <p class="roboto-condensed-light">Last updated: 13th August 2026</p> -->
-        </div>
-        <div class="trends">
-            <img src="img/unitBlueNoTxt.png" alt="" class="bgLogo">
-            <h3 class="roboto-condensed-semibold">Map of amount of members across the globe</h3>
-            <div id="chartMap" style="height: 500px; width: 100%; border-radius: 8px;"></div>
-            <div class="indicator">
-                <div class="bar"></div>
-                <div class="indicatorTxt">
-                    <span>Low</span>
-                    <span>High</span>
+            <h3 class="roboto-condensed-semibold">Division a member will likely join based on current member of each division, main rank and days joined</h3>
+            <div id="chartJoinDate" style="width: 100%; min-height: 600px;"></div>
+            <div id="probDistribution" class="roboto-condensed-light"></div>
+            <div id="modelInsights" class="roboto-condensed-light"></div>
+            <div id="latexDiv" class="roboto-condensed-regular">
+                <div class="clickable">
+                    <span>Explanation (math spoiler)</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="arrowExplain">
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </div>
+                <div class="latexText">
+                    <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">
+                        \documentclass{article}
+    \usepackage{graphicx} % Required for inserting images
+    \usepackage{hyperref}
+
+    \title{QuickWritting}
+    \author{William Rover}
+    \date{October 2026}
+
+    \begin{document}
+    \noindent \textbf{Abstract}: Here we try to determine if higher members in that division, main rank and days in faction can raise the probability of member joining that division.
+    \\
+    \\
+    First, we need to give rank a numerical value to represent the value of that specific rank (Rec, Pte, LCpl, 2Lt, etc). We know that the rank in this faction is hierarchy, therefore the higher the rank the more value it holds.
+    \\
+    \\
+    We will call those values \textbf{Rank weight}, which can be represented by the following equation:
+    \[R_i = \frac{N_{total}}{N_{i} + 1}\]
+    \begin{itemize}
+        \item $R_i$: Weight of that specific rank
+        \item $N_{total}$: total member of the faction (UNIT Personnel)
+        \item $N_{i}$: total member of that specific rank
+        \item 1: Laplace smoothing factor (this is to prevent division by 0)
+    \end{itemize}
+
+    \noindent Next, we will calculate the rank weight more generally (ORDINARY SOLDIER, NCO, JCO, SCO, GCO), since if we try to calculate the specific rank, some rank does not have anyone (MGen for example), leading to incorrect weights. We will base the weight on the "rarity" of each specific rank.
+    \\
+    \\
+    We will call the value \textbf{Weighted rarity category weight}, which is this equation:
+    \[W_C = \frac{\sum_{i = 1}^n(R_i \times r_i)}{\sum_{i = 1}^n r_i}\]
+    \begin{itemize}
+        \item $W_C$: Weight of general rank
+        \item $C$: The general rank (ORDINARY SOLDIER, NCO, JCO, SCO, GCO)
+        \item $n$: total number of specific ranks (Rec, Pte, etc) in that general rank
+        \item $R_i$: specific rank weight
+        \item $r_i$: rank hierarchy "score" (for example: in ORDINARY SOLDIER, Rec = 1, JPte = 2, ..., SSpc = 7. Then in NCO, the number reset: LCpl = 1, ..., WO1 = 9)
+    \end{itemize}
+    \noindent Now that we have the General rank weight, along with Days since joined of each member, we can move forward to finding a regression model. Since we are trying to determine the probability of a member joining a division, we have different categories (Air corps, Broadsword, etc) and also officers+ can join multiple divisions, then a \textbf{Softmax Regression}, also known as \textbf{Multinomial Logistic Regression}, solve exactly this problem. The formula is given below:
+
+    \[P(y = k | \mathbf{x}) = \frac{exp(\beta_0^{(k)} \times1 + \beta_1^{(k)}x_{daysJoined} + \beta_2^{(k)}x_{rankWeight})}{\sum_{i = 1}^C exp(\beta_0^{(i)} \times1 + \beta_1^{(i)}x_{daysJoined} + \beta_2^{(i)}x_{rankWeight})}\]
+    \begin{itemize}
+        \item $P(y = k \ | \ \mathbf{x})$: The probability that a member joins division $k$ based on the evidence $\mathbf{x}$ ($\mathbf{x} = [1 \ x_{daysJoined} \ x_{rankWeight}]$, and 1 here acts as a dummy variable for the intercept)
+        \item $\beta_0^{(k)}$: Intercept for division k. Will be explained how to calculate this below
+        \item $\beta_1^{(k)}$ and $\beta_2^{(k)}$: Coefficient for division k. Will be explained how to calculate this below
+        \item $C$: amount of divisions
+    \end{itemize}
+
+    \noindent Let's explain the role of the coefficients $\beta$ here before going how we compute them. These $\beta$ dictates how significant that variables is. For example, if $\beta_1$ is zero (0) but $\beta_2$ is highly positive (+0.8), then it means that the main rank is the main reason why they joined that certain division, and the days joined in the faction serves almost nothing (even useless that is to say). $\beta_0$ here is the intercept, in which if a division is exclusive and hard to join (few members) then it's value will be negative and vice versa.
+    \\
+    \\
+    If this were a small model, then we can just count the coefficient one time and call it a day. However, since this faction grows (a lot), the coefficient has to learn and update its value constantly. We can use \href{https://www.geeksforgeeks.org/machine-learning/what-is-gradient-descent/}{Gradient descent} (or you can read more about it \href{https://tskarvone.github.io/courses/pruju_en.pdf}{here, at page 71}) to start the coefficient at a blank state (aka 0), then it will iteratively guess, measure how wrong it is, and then change the number to be more accurate. Let's try to give it a few steps to better understand it.
+    \\
+    \\
+    \textbf{Phase 1: Initial guess}. We start by setting $\beta= 0$, then we plug it in the softmax regression formula earlier $P(
+    y = k \ | \ x)$. 
+    \\
+    \\
+    \textbf{Phase 2: Measuring the error}. The error formula (see below) dictates how accurate the guesses are. Say if the model predicted that 75\% chance for Air Corps, but the member is actually in Broadsword, then the error factor is $+0.75$.
+    \[\varepsilon_{i, k} = P(y_i = k \ | \ x_i) \ - \ y_{i, k}\]
+    \begin{itemize}
+        \item $\varepsilon_{i, k}$: The error factor
+        \item $y_{i, k}$: The boolean that tells if that member is in that division or not. 1 if true, 0 if false
+    \end{itemize}
+    \textbf{Phase 3: Calculate the gradient (the update)}. After we computed the error, we average the error across the entire server population ($Gradient \ of \beta_f^{(k)}$):
+    \[G(\beta_f^{(k)}) = \frac{\sum_{i =1}^N (\varepsilon_{i, k} \times x_{i,c})}{N}\]
+    \begin{itemize}
+        \item $G(\beta_f^{(k)})$: The gradient
+        \item $N$: The faction population
+    \end{itemize}
+    \textbf{Phase 4: Apply the new value and loop the process again}. After the initial guess, we now have the new value. We can now process these phases all over again for a certain iterations:
+    \[\beta_{c, j+1}^{(k)} = \beta_{f, j}^{(k)} \ - \ \eta \ G'(\beta_{f, j}^{(k)})\]
+    \begin{itemize}
+        \item $j$: The current iteration. $j + 1$ means the next iteration
+        \item $G'(\beta_{f, j}^{(k)})$: The derivative of the gradient
+        \item $\eta$: The learning rate (step size for each update)
+    \end{itemize}
+    \end{document}
+
+                    </latex-js>
                 </div>
             </div>
-            <!-- <p class="roboto-condensed-light">Last updated: 13th August 2026</p> -->
-        </div>
-        <div class="trends">
-            <img src="img/unitBlueNoTxt.png" alt="" class="bgLogo">
-            <h3 class="roboto-condensed-semibold">Histogram of points each member has</h3>
-            <canvas id="pointsHistogram"></canvas>
-            <!-- <p class="roboto-condensed-light">Last updated: 13th August 2026</p> -->
         </div>
     </section>
     <!-- Footer -->
     <section id="footer"></section>
-    <script src="./basicTrend.js" async defer type="module"></script>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    <script src="./regression.js" async defer type="module"></script>
     <script src="/util/LanguageSwitching/lang.js" async defer type="module"></script>
 </body>
 </html>

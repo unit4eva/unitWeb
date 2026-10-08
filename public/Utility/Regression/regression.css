@@ -11,7 +11,7 @@ body, html {
 
 /* Main */
 #main {
-    min-height: 1200px;
+    min-height: 1450px;
 }
 
 /* Indicator */
@@ -61,6 +61,45 @@ body, html {
     margin-bottom: 6rem;
 }
 
+.clickable {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.latexText {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.6s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
+}
+
+.latexText.active {
+    max-height: 3000rem; 
+    opacity: 1;
+    margin-top: 20px;
+}
+
+#arrowExplain {
+    transition: transform 0.3s ease;
+}
+
+#arrowExplain.active {
+    transform: rotate(180deg);
+}
+
+#latexDiv {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(113, 113, 113, 0.3);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 20px 20px;
+    cursor:pointer;
+}
 
 /* Mobile responsive */
 @media (max-width: 768px) {
