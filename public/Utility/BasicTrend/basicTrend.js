@@ -9,8 +9,12 @@ const API_URL = {
     "globalMembers": 'https://unitweb.sytes.net/api/regionStats',
     "pointMembers": 'https://unitweb.sytes.net/api/pointsDistribution',
     "memberByRank": 'https://unitweb.sytes.net/api/getMemberCountByRank',
-    "getRoleInfo": "https://unitweb.sytes.net/api/getRoleInfo?role_id="
+    "getRoleInfo": "https://unitweb.sytes.net/api/getRoleInfo?role_id=",
+    "memberByDivisionDept": "https://unitweb.sytes.net/api/getDivisionCounts"
 }
+
+
+
 // Fetch api
 async function fetchStuff(url) {
     // const url = `${API_URL["ptsLeaderboard"] + pageNum}`; 
@@ -34,6 +38,13 @@ async function fetchStuff(url) {
 
 // fetchStuff(API_URL["globalMembers"])
 // fetchStuff(API_URL["pointMembers"])
+
+const roleRegion = [
+    {
+        name: "UNIT Personnel",
+        id: "1438929670589386885"
+    }
+]
 
 // Draw bar chart
 let joinDateChart
@@ -462,3 +473,79 @@ async function loadStandaloneRankChart() {
 }
 
 loadStandaloneRankChart();
+
+let divisionChart;
+
+async function loadDivisionChart() {
+    try {
+        // Fetch the division counts using the provided fetchStuff utility
+        const countsData = await fetchStuff(API_URL['memberByDivisionDept']);
+
+        // 1. Define the display configuration for the divisions
+        const divisions = [
+            { key: 'marine', label: 'Marine Corps', color: '#1f77b4' },
+            { key: 'larp', label: 'LARP', color: '#ff7f0e' },
+            { key: 'aircorps', label: 'Air Corps', color: '#2ca02c' },
+            { key: 'broadsword', label: 'Broadsword', color: '#d62728' },
+            { key: 'innovationandcreative', label: 'Innovation & Creative', color: '#9467bd' },
+            { key: 'moderation', label: 'Moderation', color: '#8c564b' },
+            { key: 'diplomatic', label: 'Diplomatic', color: '#e377c2' }
+        ];
+
+        const chartLabels = [];
+        const chartCounts = [];
+        const chartColors = [];
+
+        // 2. Extract data from the fetched API object based on the predefined keys
+        for (const div of divisions) {
+            chartLabels.push(div.label);
+            chartColors.push(div.color);
+            
+            // PostgreSQL often returns COUNT() as strings, so we parse it safely
+            const count = countsData ? parseInt(countsData[div.key] || 0) : 0;
+            chartCounts.push(count);
+        }
+
+        // --- DYNAMIC Y-AXIS CAPPING ---
+        // Find the highest count and add a 20% padding to the top of the chart
+        const sortedCounts = [...chartCounts].sort((a, b) => b - a);
+        // const maxMembers = Math.ceil((sortedCounts[0] || 10) * 1.2);
+
+        // 3. Render the chart
+        const ctx = document.getElementById('divisionBarChart').getContext('2d');
+        divisionChart = new Chart(ctx, {
+            type: 'bar', 
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Personnel by each rank',
+                    data: chartCounts,
+                    backgroundColor: chartColors.map(color => color + "80"),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true, // Set this to TRUE
+                aspectRatio: 1.75,
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Ranks' }
+                    },
+                    y: {
+                        title: { display: true, text: 'Members' },
+                        beginAtZero: true,
+                        // max: maxMembers, // Enforces the cap to prevent scale distortion
+                        ticks: { precision: 0 }
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.error("Failed to load division chart:", error);
+    }
+}
+
+// Initialize
+loadDivisionChart();
