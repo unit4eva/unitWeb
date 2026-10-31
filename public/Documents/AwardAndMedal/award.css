@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#main {
+    margin: 0;
+    padding: 80px 30px;
+    padding-bottom: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 100px;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Individual card styling */
+.award-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.award-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+/* Medal Image */
+.award-img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Pill-shaped title */
+.award-title {
+    background-color: rgba(180, 150, 200, 0.25); /* Light translucent purple fallback */
+    color: #9b59b6; /* Darker purple text */
+    padding: 10px 30px;
+    border-radius: 5px; /* Creates the pill shape */
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+/* Description text */
+.award-description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    max-width: 280px; /* Constrains the text width to match the mockup */
+    margin: 0;
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .awards-grid {
+        grid-template-columns: 1fr; /* Stacks into a single column */
+        gap: 50px;
+    }
+}

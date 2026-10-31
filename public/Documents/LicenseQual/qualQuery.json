@@ -1,0 +1,57 @@
+[
+    {
+        "categoryName": "MAIN QUALIFICATION",
+        "quals": [
+            {
+                "qualName": "DRIVING LICENSE",
+                "desc": ["Allows the use of approved land vehicles.<br>(4x4 ALLOWED WITHOUT LICENSE)"],
+                "criteria": "AWARDED UPON COMPLETION OF THE DRIVING TEST DURING A QUALIFICATION COURSE EVENT"
+            },
+            {
+                "qualName": "MARKSMAN WEAPON LICENSE",
+                "desc": ["Allows the use of permitted marksman weapons<br>(DMRs, Snipers)"],
+                "criteria": "AWARDED UPON COMPLETION OF THE MARKSMANSHIP TEST DURING A QUALIFICATION COURSE EVENT"
+            },
+            {
+                "qualName": "SUPPORT WEAPON LICENSE",
+                "desc": ["Allows the use of permitted support weapons<br>(LMGs, GPMGs + priority for gun seats on vehicles)"],
+                "criteria": "AWARDED UPON COMPLETION OF THE SUPPORT WEAPON TEST DURING A QUALIFICATION COURSE EVENT"
+            }
+        ]
+    },
+    {
+        "categoryName": "DIVISION-SPECIFIC QUALIFICATIONS",
+        "quals": [
+            {
+                "qualName": "PILOT LICENSE (AIR CORPS ONLY)",
+                "desc": ["Allows the use of all helicopters"],
+                "criteria": "AWARDED UPON COMPLETION OF THE PILOT TEST DURING AN AIR CORPS TRAINING EVENT"
+            },
+            {
+                "qualName": "BASIC BOAT LICENSE (MARINES ONLY)",
+                "desc": ["Allows the use of all boats except for the CB90"],
+                "criteria": "AWARDED UPON COMPLETION OF THE BASIC BOAT TEST"
+            },
+            {
+                "qualName": "HEAVY BOAT LICENSE (MARINES ONLY)",
+                "desc": ["Allows the use of all boats"],
+                "criteria": "AWARDED UPON COMPLETION OF THE HEAVY BOAT TEST"
+            }
+        ]
+    },
+    {
+        "categoryName": "RANK-SPECIFIC QUALIFICATIONS",
+        "quals": [
+            {
+                "qualName": "EVENT HOST (LCpl/NCO+)",
+                "desc": ["Allows the permissions to host operations", "Needs to be an NCO+ and submit an application (will be opened at least once a month"],
+                "criteria": "AWARDED ONCE ALL REQUIREMENTS ARE MET AND AN APPLICATION IS PUT IN RANK REQUEST CHANNEL"
+            },
+            {
+                "qualName": "QUALIFICATIONS EXAMINER (LCpl/NCO+)",
+                "desc": ["Allows the permissions to host qualification exams", "Must have event host qual already", "Must have all qualifications already", "Must have a microphone"],
+                "criteria": "AWARDED ONCE ALL REQUIREMENTS ARE MET AND AN APPLICATION IS PUT IN RANK REQUEST CHANNEL"
+            }
+        ]
+    }
+]

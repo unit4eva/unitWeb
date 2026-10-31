@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Valour Cross",
+        "imgPath": "./img/pinkCross.png",
+        "color": "#AD1457",
+        "description": "Awarded for the most conspicuous bravery, or some daring or pre-eminent act of valour or self-sacrifice, or extreme devotion to duty in the presence of the enemy. Gains you +10 points upon being awarded."
+    },
+    {
+        "name": "Distinguished Land Cross",
+        "imgPath": "./img/purpleCross.png",
+        "color": "#9B59B6",
+        "description": "Awarded for an act or acts of exemplary gallantry during active operations against the enemy on land. Gains you +5 points upon being awarded."
+    },
+    {
+        "name": "Distinguished Air Cross",
+        "imgPath": "./img/purpleCross.png",
+        "color": "#9B59B6",
+        "description": "Awarded for an act or acts of valour, courage or devotion to duty whilst flying in active operations against the enemy. Gains you +5 points upon being awarded."
+    },
+    {
+        "name": "Emergency Response Medal",
+        "imgPath": "./img/blueMedal.png",
+        "color": "#3497D9",
+        "description": "Awarded for helping the faction out in times of need. Gains you +5 points upon being awarded."
+    },
+    {
+        "name": "Contributor Medal",
+        "imgPath": "./img/purpleMedal.png",
+        "color": "#71368A",
+        "description": "Awarded for an act or acts of exemplary gallantry during active operations against the enemy on land. Gains you +5 points upon being awarded."
+    },
+    {
+        "name": "Booster Medal",
+        "imgPath": "./img/purpleMedal.png",
+        "color": "#71368A",
+        "description": "Awarded for boosting the faction on discord. Also gains +10 points for every boost. Thank you!"
+    },
+    {
+        "name": "Media Medal",
+        "imgPath": "./img/greenMedal.png",
+        "color": "#11806A",
+        "description": "Awarded at Head of Media Dept's discretion for good work relating to the Media Department. Gains you  +10 points upon being awarded."
+    }
+]
