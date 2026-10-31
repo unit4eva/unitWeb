@@ -1,0 +1,27 @@
+{
+    "id": "examOp",
+    "name": "UNIT EXAMINATION POINTS",
+    "imgPath": "/Documents/EventPtsSys/img/exam.png",
+    "thumbPath": "/Documents/EventPtsSys/img/examThumb.png",
+    "maxPts": "5 POINTS MAXIMUM",
+    "criteria": [
+        {
+            "name": "Qualification points:",
+            "content": [
+                "1pt for every qualification gained"
+            ]
+        },
+        {
+            "name": "Examiner points:",
+            "content": [
+                "Oversaw a qualification exam = 1pt (stacks)"
+            ]
+        },
+        {
+            "name": "Contribution points:",
+            "content": [
+                "Disruptive behaviour = -3pts"
+            ]
+        }
+    ]
+}

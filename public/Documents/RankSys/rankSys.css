@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.roadmapWrapper {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.roadmapContainer {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.rank-node {
+    padding: 12px 90px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.event-node {
+    padding: 12px 90px;
+    border: 1px solid var(--txt-color);
+    color: var(--txt-color);
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.connector-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 52px;
+    width: 100%;
+    padding: 8px 0;
+}
+
+/* Vertical dashed line */
+.connector-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    border-left: 1.5px dashed var(--txt-color);
+}
+
+/* Tiny downward arrowhead at the bottom of the connector */
+.connector-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4.5px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--txt-color);
+}
+
+/* Requirement text placed to the right of the center line */
+.requirement-text {
+    margin-left: calc(30% + 28px);
+    width: 340px;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--txt-color);
+    text-align: left;
+    padding: 4px 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .requirement-text {
+        margin-left: calc(45% + 28px);
+    }
+
+    .event-node {
+        padding: 12px 20px;
+    }
+}

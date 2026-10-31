@@ -1,0 +1,42 @@
+{
+    "id": "ronoOp",
+    "name": "RONOGRAD OPERATION POINTS",
+    "imgPath": "/Documents/EventPtsSys/img/ronoOp.png",
+    "thumbPath": "/Documents/EventPtsSys/img/ronoThumb.png",
+    "maxPts": "12 POINTS MAXIMUM",
+    "criteria": [
+        {
+            "name": "Time points:",
+            "content": [
+                "60 minutes or less = +5pts",
+                "61-90 minutes  = +6pts",
+                "91-120 minutes = +8pts",
+                "121+ minutes = +9pts"
+            ]
+        },
+        {
+            "name": "Contribution points:",
+            "content": [
+                "Failing to contribute to the team = give them only 50% of the points they would have received",
+                "Disruptive behaviour/got a strike during event = give them only 25% of the points they would have received"
+            ]
+        },
+        {
+            "name": "Leadership points (does not stack):",
+            "content": [
+                "Host: +3pts",
+                "Co-Host: +2pts",
+                "Squadleader: +1pt"
+            ]
+        },
+        {
+            "name": "Achievement points:",
+            "content": [
+                "Serverwide event completed (bunker, lab raid, pharma) = +1pt (does not stack)",
+                "No deaths the whole event= +2pts",
+                "Stealthing and/or soloing a raid = +1pt (does not stack, only for those who participated in the stealth/solo mission.)",
+                "Notable action (host discretion) (must be elaborated on in the event log) = +1pt (does not stack)"
+            ]
+        }
+    ]
+}

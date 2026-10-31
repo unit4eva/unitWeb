@@ -1,0 +1,49 @@
+{
+    "id": "zombieOp",
+    "name": "ZOMBIE OPERATION POINTS",
+    "imgPath": "/Documents/EventPtsSys/img/zombieOp.png",
+    "thumbPath": "/Documents/EventPtsSys/img/zomThumb.png",
+    "maxPts": "11 POINTS MAXIMUM",
+    "criteria": [
+        {
+            "name": "Time points:",
+            "content": [
+                "60 minutes or less = +1pt",
+                "61-120 minutes  = +2pts",
+                "121+ minutes = +3pts"
+            ]
+        },
+        {
+            "name": "Contribution points:",
+            "content": [
+                "Failing to contribute to the team = give them only 50% of the points they would have received",
+                "Disruptive behaviour/got a strike during event = give them only 25% of the points they would have received"
+            ]
+        },
+        {
+            "name": "Leadership points (does not stack):",
+            "content": [
+                "Host: +2pts",
+                "Co-Host: +2pts",
+                "Squadleader: +1pt"
+            ]
+        },
+        {
+            "name": "Mission points:",
+            "content": [
+                "Easy - Medium mission = +1pt (INTRODUCTIONS DON'T COUNT)",
+                "Hard - Extreme mission = +2pts",
+                "Every server-wide event in Zombies completed successfully= +2pts"
+            ]
+        },
+        {
+            "name": "Achievement points:",
+            "content": [
+                "UNIT Personnel rescued (they must start as a survivor) = +1pt",
+                "Survival point (did 3 medium+ missions consecutively) = +2 pt (does not stack)",
+                "Night extraction (after 6pm) = +1 pt (does not stack)",
+                "Notable action (host discretion) (must be elaborated on in the event log) = +1pt (does not stack)"
+            ]
+        }
+    ]
+}

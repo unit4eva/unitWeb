@@ -1,0 +1,17 @@
+{
+    "id": "gamenight",
+    "name": "GAME NIGHT POINTS",
+    "imgPath": "/Documents/EventPtsSys/img/gamenight.png",
+    "thumbPath": "/Documents/EventPtsSys/img/gamenightThumb.png",
+    "maxPts": "3 POINTS MAXIMUM",
+    "criteria": [
+        {
+            "name": "Time points:",
+            "content": [
+                "1 hour or less = +1pt",
+                "61-120 minutes  = +2pts",
+                "121+ minutes = +3pts"
+            ]
+        }
+    ]
+}
