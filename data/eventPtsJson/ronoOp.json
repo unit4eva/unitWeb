@@ -1,8 +1,8 @@
 {
     "id": "ronoOp",
     "name": "RONOGRAD OPERATION POINTS",
-    "imgPath": "/Documents/EventPtsSys/img/ronoOp.png",
-    "thumbPath": "/Documents/EventPtsSys/img/ronoThumb.png",
+    "imgPath": "/data/eventPtsJson/img/ronoOp.png",
+    "thumbPath": "/data/eventPtsJson/img/ronoThumb.png",
     "maxPts": "12 POINTS MAXIMUM",
     "criteria": [
         {

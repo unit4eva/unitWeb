@@ -1,8 +1,8 @@
 {
     "id": "zombieOp",
     "name": "ZOMBIE OPERATION POINTS",
-    "imgPath": "/Documents/EventPtsSys/img/zombieOp.png",
-    "thumbPath": "/Documents/EventPtsSys/img/zomThumb.png",
+    "imgPath": "/data/eventPtsJson/img/zombieOp.png",
+    "thumbPath": "/data/eventPtsJson/img/zomThumb.png",
     "maxPts": "11 POINTS MAXIMUM",
     "criteria": [
         {

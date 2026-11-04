@@ -1,8 +1,8 @@
 {
     "id": "examOp",
     "name": "UNIT EXAMINATION POINTS",
-    "imgPath": "/Documents/EventPtsSys/img/exam.png",
-    "thumbPath": "/Documents/EventPtsSys/img/examThumb.png",
+    "imgPath": "/data/eventPtsJson/img/exam.png",
+    "thumbPath": "/data/eventPtsJson/img/examThumb.png",
     "maxPts": "5 POINTS MAXIMUM",
     "criteria": [
         {

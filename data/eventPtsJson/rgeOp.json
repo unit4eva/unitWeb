@@ -1,8 +1,8 @@
 {
     "id": "rgeOp",
     "name": "RGE OPERATION POINTS",
-    "imgPath": "/Documents/EventPtsSys/img/rgeOp.png",
-    "thumbPath": "/Documents/EventPtsSys/img/rgeThumb.png",
+    "imgPath": "/data/eventPtsJson/img/rgeOp.png",
+    "thumbPath": "/data/eventPtsJson/img/rgeThumb.png",
     "maxPts": "12 POINTS MAXIMUM",
     "criteria": [
         {

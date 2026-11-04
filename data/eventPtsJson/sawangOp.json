@@ -1,8 +1,8 @@
 {
     "id": "sawangOp",
     "name": "SAWANG OPERATION POINTS",
-    "imgPath": "/Documents/EventPtsSys/img/sawangOp.png",
-    "thumbPath": "/Documents/EventPtsSys/img/sawangThumb.png",
+    "imgPath": "/data/eventPtsJson/img/sawangOp.png",
+    "thumbPath": "/data/eventPtsJson/img/sawangThumb.png",
     "maxPts": "12 POINTS MAXIMUM",
     "criteria": [
         {
