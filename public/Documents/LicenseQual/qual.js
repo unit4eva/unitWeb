@@ -5,7 +5,7 @@ loadFile("/Components/Navbar/navbar.html", "navbar");
 loadFile("/Components/Footer/footer.html", "footer");
 
 // Point this to your actual JSON file path
-const jsonFileUrl = './qualQuery.json';
+const jsonFileUrl = '/data/nav/qualQuery.json';
 
 async function loadQualifications() {
     try {

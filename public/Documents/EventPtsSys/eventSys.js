@@ -6,12 +6,12 @@ loadFile("/Components/Footer/footer.html", "footer");
 
 // Define the designated folder paths for your JSON files here
 const jsonFiles = [
-    './eventPtsJson/ronoOp.json',
-    './eventPtsJson/sawangOp.json',
-    './eventPtsJson/zombieOp.json',
-    './eventPtsJson/rgeOp.json',
-    './eventPtsJson/gamenight.json',
-    './eventPtsJson/examOp.json'
+    '/data/nav/eventPtsJson/ronoOp.json',
+    '/data/nav/eventPtsJson/sawangOp.json',
+    '/data/nav/eventPtsJson/zombieOp.json',
+    '/data/nav/eventPtsJson/rgeOp.json',
+    '/data/nav/eventPtsJson/gamenight.json',
+    '/data/nav/eventPtsJson/examOp.json'
 ];
 
 async function loadEventButtons() {
