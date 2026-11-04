@@ -6,12 +6,12 @@ loadFile("/Components/Footer/footer.html", "footer");
 
 // Array of your JSON files stored in the designated folder
 const jsonFiles = [
-    './eventPtsJson/ronoOp.json',
-    './eventPtsJson/sawangOp.json',
-    './eventPtsJson/zombieOp.json',
-    './eventPtsJson/rgeOp.json',
-    './eventPtsJson/gamenight.json',
-    './eventPtsJson/examOp.json'
+    '/data/eventPtsJson/ronoOp.json',
+    '/data/eventPtsJson/sawangOp.json',
+    '/data/eventPtsJson/zombieOp.json',
+    '/data/eventPtsJson/rgeOp.json',
+    '/data/eventPtsJson/gamenight.json',
+    '/data/eventPtsJson/examOp.json'
 ];
 
 async function loadEventDetails() {
