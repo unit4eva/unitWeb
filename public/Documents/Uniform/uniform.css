@@ -9,3 +9,417 @@ body, html {
     width: 100%;
 }
 
+#main {
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 32px 20px;
+    gap: 24px;
+    min-height: 120vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* The dropdowns */
+.custom-dropdown {
+  position: relative;
+  user-select: none;
+  z-index: 10;
+}
+
+.unit-selector {
+  min-width: 310px;
+}
+
+.role-selector {
+  min-width: 180px;
+}
+
+/* Trigger Button */
+.dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #009EDB;
+  
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.unit-selector .dropdown-trigger {
+  height: 54px;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+}
+
+.role-selector .dropdown-trigger {
+  height: 44px;
+  font-size: 1.2rem;
+  justify-content: center;
+}
+
+.selected-label {
+  /* font-weight: 700; */
+  color: #ECF9FF;
+  flex: 1;
+}
+
+.role-selector .selected-label {
+  text-align: center;
+  padding-right: 18px;
+}
+
+.unit-icon {
+  width: 38px;
+  height: 38px;
+  background-color: #666666;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+}
+
+.dropdown-arrow {
+  color: #ECF9FF;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.custom-dropdown.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Floating Dropdown Menu (ul) */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-color);
+  /* background: #e9eff4; */
+  border-radius: 10px;
+  box-shadow: 0 6px 16px var(--lan-shadow);
+  
+  list-style: none;
+  overflow: hidden;
+  display: none;
+}
+
+.custom-dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown Options (li) */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 0.5px solid #cdd6de;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: var(--lan-hover);
+}
+
+.item-label {
+  /* font-weight: 700; */
+  font-size: 1.1rem;
+  color: var(--txt-color);
+}
+
+.role-selector .dropdown-item {
+  justify-content: center;
+}
+
+/* Viewer */
+
+.stage-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  padding: 20px 320px; /* Leaves horizontal room for left/right callout text */
+}
+
+.uniform-stage {
+  position: relative;
+  width: 360px;
+  height: 470px;
+  /* background-color: #d9d9d9; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.uniform-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================================
+   Font Awesome Turn Buttons
+   ========================================= */
+.rotate-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--txt-color);
+  transform: translateY(22px); /* Aligns label slightly below the bottom edge of the box */
+  padding: 0;
+}
+
+.rotate-btn i {
+  font-size: 4.5rem;
+  line-height: 0.75;
+  color: var(--txt-color);
+  transition: color 0.15s ease, transform 0.1s ease;
+}
+
+.rotate-btn:hover i {
+  color: #8d8d8d;
+}
+
+.rotate-btn:active i {
+  transform: scale(0.94);
+}
+
+.rotate-label {
+  /* font-weight: 700; */
+  font-size: 0.8rem;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   Callout Pins, Diagonal Lines & Lists
+   ========================================= */
+.callout-layer {
+  position: absolute;
+  top: 14%;
+  bottom: 14%;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.callout {
+  position: absolute;
+  top: var(--margin-top, 0%);
+  left: var(--margin-right, 50%);
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+}
+
+/* Anchor Circle on Uniform */
+.callout-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--txt-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.25); /* Keeps circle visible over dark camo */
+}
+
+/* Wrapper for Horizontal Line + Bullet Points */
+.callout-body {
+  position: absolute;
+  top: -28px; /* Anchors the top of the container to the exact end of the 45° line */
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: max-content;
+}
+
+/* Horizontal Line Segment */
+.callout-line {
+  position: relative;
+  width: 215px; /* Long enough for the 40% belt pin to clear the right edge of the box */
+  height: 1.5px;
+  background-color: var(--txt-color);
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+/* 45-Degree Angled Line Segment back to the Circle Edge */
+.callout-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 33px; /* Exact hypotenuse from (±28px, -28px) to the 7px circle radius */
+  height: 2px;
+  background-color: var(--txt-color);
+}
+
+/* --- Direction: "right" --- */
+.callout.turn-right .callout-body {
+  left: 28px;
+  flex-direction: row;
+  text-align: left;
+}
+
+.callout.turn-right .callout-line::before {
+  left: 0;
+  transform-origin: left center;
+  transform: rotate(135deg);
+}
+
+/* --- Direction: "left" --- */
+.callout.turn-left .callout-body {
+  right: 28px;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.callout.turn-left .callout-line::before {
+  right: 0;
+  transform-origin: right center;
+  transform: rotate(-135deg);
+}
+
+/* Bullet List Text */
+.callout-list {
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 0.78rem;
+  list-style-type:none;
+  /* font-weight: 700; */
+  line-height: 1.35;
+  max-width: 260px;
+  margin-top: -6px; /* Centers the first bullet line with the horizontal pointer line */
+}
+
+/* =========================================
+   Mobile Responsiveness
+   ========================================= */
+@media (max-width: 1024px) {
+  /* Strip the huge 320px horizontal padding and switch to a CSS Grid */
+  .stage-wrapper {
+    padding: 24px 5%;
+    display: grid;
+    grid-template-columns: 70px 1fr 70px;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-items: center;
+    gap: 24px 0;
+  }
+
+  /* Reset the Y-axis offset on the buttons */
+  .rotate-btn {
+    transform: none;
+  }
+
+  /* Anchor buttons to the left and right of the grid */
+  #btn-turn-left { grid-column: 1; grid-row: 1; }
+  #btn-turn-right { grid-column: 3; grid-row: 1; }
+
+  /* "Unwrap" the stage so the image and callout layer can flow independently */
+  .uniform-stage {
+    display: contents;
+  }
+
+  /* Center the uniform image */
+  .uniform-img {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: 320px;
+    max-height: 50vh;
+  }
+
+  /* Move the entire callout layer below the image and buttons */
+  .callout-layer {
+    grid-column: 1 / 4; /* Span full width */
+    grid-row: 2;
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 500px;
+    pointer-events: auto;
+  }
+
+  /* Reset the absolutely positioned pins */
+  .callout {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Force all text to align normally regardless of turn-left/turn-right classes */
+  .callout-body {
+    position: static;
+    width: 100%;
+    flex-direction: column !important;
+    text-align: left !important;
+  }
+
+  /* Hide the anchor dots and horizontal lines on mobile */
+  .callout-dot,
+  .callout-line {
+    display: none !important;
+  }
+
+  /* Convert the floating text into stacked list cards */
+  .callout-list {
+    max-width: 100%;
+    margin: 0;
+    padding: 16px;
+    border: 1.5px solid var(--txt-color);
+    border-radius: 8px;
+    background-color: var(--bg-color, transparent);
+    box-shadow: 0 4px 12px var(--lan-shadow, rgba(0, 0, 0, 0.05));
+  }
+}
+
+/* Extra tweaks for small smartphone screens */
+@media (max-width: 480px) {
+    #main {
+        min-height: 170vh;
+    }
+    .stage-wrapper {
+        grid-template-columns: 50px 1fr 50px;
+        padding: 24px 12px;
+    }
+
+    .rotate-btn i {
+        font-size: 3.5rem;
+    }
+
+    /* Allow the dropdown buttons to shrink to fit the screen */
+    .unit-selector,
+    .role-selector {
+        min-width: 100%;
+        width: 100%;
+    }
+    
+    .unit-selector .dropdown-trigger {
+        font-size: 1.15rem;
+        padding: 8px 12px;
+  }
+}

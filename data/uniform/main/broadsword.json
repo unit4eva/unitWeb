@@ -1,0 +1,101 @@
+{
+    "name": "UNIT BROADSWORD",
+    "logoPath": "/data/uniform/img/divisionLogo/unitBS.png",
+    "additionalNote": "",
+    "uniform": [
+        {
+            "roleName": "EXAMPLE #1",
+            "relativePath": "/data/uniform/img/broadsword/",
+            "uniformImg": ["example11.png", "example12.png", "example13.png", "example14.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: Refer to UNIT Landforce regs, and you can use all NVGs"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: Any T-shirt", "Vest/Chest rig: ANY, but you are required to have the Blackcat Pirate Morale patch"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Bottom: ANY"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: ANY"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        },
+        {
+            "roleName": "EXAMPLE #2",
+            "relativePath": "/data/uniform/img/broadsword/",
+            "uniformImg": ["example21.png", "example22.png", "example23.png", "example24.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: Refer to UNIT Landforce regs, and you can use all NVGs"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: Any T-shirt", "Vest/Chest rig: ANY, but you are required to have the Blackcat Pirate Morale patch"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Bottom: ANY"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: ANY"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        },
+        {
+            "roleName": "EXAMPLE #3",
+            "relativePath": "/data/uniform/img/broadsword/",
+            "uniformImg": ["example31.png", "example32.png", "example33.png", "example34.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: Refer to UNIT Landforce regs, and you can use all NVGs"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: Any T-shirt", "Vest/Chest rig: ANY, but you are required to have the Blackcat Pirate Morale patch"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Bottom: ANY"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: ANY"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        }
+
+        ]
+}

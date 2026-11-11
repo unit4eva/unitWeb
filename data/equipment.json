@@ -1,0 +1,64 @@
+[
+    {
+        "categoryName": "ALLOWED VEHICLES",
+        "quals": [
+            {
+                "qualName": "LAND VEHICLES",
+                "desc": ["No driving license = 4x4 only<br>DRIVING LICENSE = ALL except for Stryker (STRYKER ALLOWED FOR EVERYONE IN BUNKER/LAB ONLY)<br>DRIVING LICENSE AND IN BREADSWORD = ALL"]
+            },
+            {
+                "qualName": "AIR VEHICLES",
+                "desc": ["NOT IN AIR CORPS = NONE<br>Air Corps Cadet  = LITTLEBIRD (NORMAL AND ATTACK VARIANT) ONLY (however,if there is an AIR CORPS PILOT ingame with you then you can use any helicopter)<br>Air Corps Pilot  = ANY<br>Breadsword =  LITTLEBIRD (NORMAL VARIANT) ONLY"]
+            },
+            {
+                "qualName": "SEA VEHICLES",
+                "desc": ["NOT IN MARINES OR BROADSWORD = NONE<br>Basic Boat License = ALL except CB90<br>Heavy Boat License = ALL<br>Breadsword = RHIB 500 and 7m RIB ONLY"]
+            }
+        ]
+    },
+    {
+        "categoryName": "STANDARD EQUIPMENT",
+        "quals": [
+            {
+                "qualName": "ASSAULT & CARBINE RIFLES",
+                "desc": ["Any"],
+                "criteria": "(recommended to use 5.56 for easier logistics)"
+            },
+            {
+                "qualName": "BATTLE RIFLES",
+                "desc": ["WITHOUT MARKSMAN LICENSE = SA58 ONLY<br>WITH MARKSMAN LICENSE = ANY"]
+            },
+            {
+                "qualName": "PISTOLS",
+                "desc": ["NOT IN MARINES OR BROADSWORD = NONE<br>Basic Boat License = ALL except CB90<br>Heavy Boat License = ALL<br>Breadsword = RHIB 500 and 7m RIB ONLY"],
+                "criteria": "(recommended to use 9mm for easier logistics)"
+            },
+            {
+                "qualName": "SUBMACHINE GUNS & PERSONAL DEFENCE WEAPONS",
+                "desc": ["NONE except if in the Broadsword Division or the Air Corps"],
+                "criteria": "(recommended to use 9mm for easier logistics)"
+            },
+            {
+                "qualName": "SHOTGUNS",
+                "desc": ["NONE except if in the Broadsword Division"]
+            }
+        ]
+    },
+    {
+        "categoryName": "SPECIAL EQUIPMENT (LICENSES NEEDED)",
+        "quals": [
+            {
+                "qualName": "PERMITTED MARKSMAN/SNIPER WEAPONS:",
+                "desc": ["READ <a href=\"https://unitweb.sytes.net/Documents/LicenseQual/\">Marksman license qual</a>"]
+            },
+            {
+                "qualName": "PERMITTED SUPPORT WEAPONS",
+                "desc": ["READ <a href=\"https://unitweb.sytes.net/Documents/LicenseQual/\">Support license qual</a>"]
+            },
+            {
+                "qualName": "ADDITIONAL PRIVILEGES",
+                "desc": ["If you have <a href=\"https://unitweb.sytes.net/Documents/LicenseQual/\">support license qual</a>  priority for turret seats on vehicles"]
+            }
+        ]
+    }
+]

@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#main {
+    margin: 0;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    color: var(--txt-color);
+}
+
+.qualsContainer {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Category Title Styling */
+.categorySection {
+    margin-bottom: 50px;
+}
+
+.categoryTitle {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+/* Accordion Box Styling */
+.accordionItem {
+    border: 1px solid var(--txt-color);
+    margin-bottom: 40px;
+    /* background-color: transparent; */
+    border-radius: 4px;
+    /* box-sizing: border-b ox; */
+    overflow: hidden;
+}
+
+/* Header inside the accordion */
+.accordionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+/* The toggle arrow */
+.accordionArrow {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+/* Hidden content area */
+.accordionContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    /* Transition visibility as well so it doesn't block clicks/paint when closed */
+    transition: grid-template-rows 0.3s ease-in-out, visibility 0.3s;
+    visibility: hidden;
+    overflow: hidden; /* Ensures the grid track strictly contains the element */
+}
+
+/* Inner wrapper handles the padding and hides text when collapsed */
+.accordionInner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* ACTIVE STATE - Expands the grid */
+.accordionItem.active .accordionContent {
+    grid-template-rows: 1fr;
+    visibility: visible;
+}
+
+.accordionItem.active .accordionArrow {
+    transform: rotate(180deg);
+}
+
+.qualDesc {
+    margin: 0 0 25px 0;
+    padding-left: 25px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.qualCriteria {
+    margin: 0 0 20px 0; /* Bottom spacing applied as margin to animate cleanly */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}

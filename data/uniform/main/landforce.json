@@ -1,0 +1,155 @@
+{
+    "name": "UNIT LAND FORCE",
+    "logoPath": "/data/uniform/img/divisionLogo/UNIT_LF_LOGO.png",
+    "additionalNote": "Do not use MARPAT. MARPAT is reserved for Marines",
+    "uniform": [
+        {
+            "roleName": "EXAMPLE #1",
+            "relativePath": "/data/uniform/img/landforce/",
+            "uniformImg": ["example11.png", "example12.png", "example13.png", "example14.png"],
+            "description": [
+                    {
+                        "desc": ["ANY Hat and helmet, as long as the color is tan/brown/khaki", "Accessories are up to preferences", "ANY earwear, facewear, eyewear"],
+                        "marginTop": "0%",
+                        "marginRight": "70%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Top: Any in woodland/temperate camo, green or tan", "Backpack: Any in VariCam, US Woodland, EMR summer, green or tan", "Glove, wrist, footwear: Any"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Vest: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Vest attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Belt: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Belt attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: Any in woodland/temperate camo"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    }
+                ]
+        },
+        {
+            "roleName": "EXAMPLE #2",
+            "relativePath": "/data/uniform/img/landforce/",
+            "uniformImg": ["example21.png", "example22.png", "example23.png", "example24.png"],
+            "description": [
+                    {
+                        "desc": ["ANY Hat and helmet, as long as the color is tan/brown/khaki", "Accessories are up to preferences", "ANY earwear, facewear, eyewear"],
+                        "marginTop": "0%",
+                        "marginRight": "70%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Top: Any in woodland/temperate camo, green or tan", "Backpack: Any in VariCam, US Woodland, EMR summer, green or tan", "Glove, wrist, footwear: Any"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Vest: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Vest attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Belt: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Belt attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: Any in woodland/temperate camo"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    }
+                ]
+        },
+        {
+            "roleName": "EXAMPLE #3",
+            "relativePath": "/data/uniform/img/landforce/",
+            "uniformImg": ["example31.png", "example32.png", "example33.png", "example34.png"],
+            "description": [
+                    {
+                        "desc": ["ANY Hat and helmet, as long as the color is tan/brown/khaki", "Accessories are up to preferences", "ANY earwear, facewear, eyewear"],
+                        "marginTop": "0%",
+                        "marginRight": "70%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Top: Any in woodland/temperate camo, green or tan", "Backpack: Any in VariCam, US Woodland, EMR summer, green or tan", "Glove, wrist, footwear: Any"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Vest: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Vest attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Belt: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Belt attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: Any in woodland/temperate camo"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    }
+                ]
+        },
+        {
+            "roleName": "EXAMPLE #4",
+            "relativePath": "/data/uniform/img/landforce/",
+            "uniformImg": ["example41.png", "example42.png", "example43.png", "example44.png"],
+            "description": [
+                    {
+                        "desc": ["ANY Hat and helmet, as long as the color is tan/brown/khaki", "Accessories are up to preferences", "ANY earwear, facewear, eyewear"],
+                        "marginTop": "0%",
+                        "marginRight": "70%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Top: Any in woodland/temperate camo, green or tan", "Backpack: Any in VariCam, US Woodland, EMR summer, green or tan", "Glove, wrist, footwear: Any"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Vest: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Vest attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Belt: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan", "Belt attachments: Any in VariCam, U.S. Woodland, EMR Summer, green, or tan"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: Any in woodland/temperate camo"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    }
+                ]
+        }
+        ]
+}

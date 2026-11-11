@@ -1,0 +1,119 @@
+{
+    "name": "UNIT AIR CROPS",
+    "logoPath": "/data/uniform/img/divisionLogo/unitAC.png",
+    "additionalNote": "",
+    "uniform": [
+        {
+            "roleName": "CADET",
+            "relativePath": "/data/uniform/img/aircorp/",
+            "uniformImg": ["cadet1.png", "cadet2.png", "cadet3.png", "cadet4.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: HGU-56/P"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: BDU in Charcoal (grey)", "Vest: CVS or 6094A in Black", "Vest attachments: ANY in black"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Backpack: ANY UNDER 28 SLOTS in black"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: BDU in Charcoal (grey)"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: Rigger's Belt or Taskforce in Black", "Belt attachments: ANY in Black"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        },
+        {
+            "roleName": "PILOT",
+            "relativePath": "/data/uniform/img/aircorp/",
+            "uniformImg": ["pilot1.png", "pilot2.png", "pilot3.png", "pilot4.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: HGU-56/P"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: CWU-27/P in Freedom Green", "Vest: CVS or 6094A in Black", "Vest attachments: ANY in black"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Backpack: ANY UNDER 28 SLOTS in black"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: CWU-27/P in Freedom Green"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: Rigger's Belt or Taskforce in Blackn", "Belt attachments: ANY in Black"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        },
+        {
+            "roleName": "FLIGHT OFFICER",
+            "relativePath": "/data/uniform/img/aircorp/",
+            "uniformImg": ["fo1.png", "fo2.png", "fo3.png", "fo4.png"],
+            "description": [
+                    {
+                        "desc": ["Helmet: HGU-56/P"],
+                        "marginTop": "0%",
+                        "marginRight": "30%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Top: Black APC Rapid Long Sleeve Shirt", "Vest: CVS or 6094A in Black", "Vest attachments: ANY in black"],
+                        "marginTop": "40%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Backpack: ANY UNDER 28 SLOTS in black"],
+                        "marginTop": "40%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    },
+                    {
+                        "desc": ["Bottom: Black APC Rapid Long Sleeve Shirt"],
+                        "marginTop": "76%",
+                        "marginRight": "40%",
+                        "turn": "left"
+                    },
+                    {
+                        "desc": ["Belt: Rigger's Belt or Taskforce in Blackn", "Belt attachments: ANY in Black"],
+                        "marginTop": "65%",
+                        "marginRight": "60%",
+                        "turn": "right"
+                    }
+                ]
+        }
+
+        ]
+}
