@@ -57,7 +57,7 @@ body, html {
 /* Description text */
 .award-description {
     font-size: 1rem;
-    color: #333;
+    color: var(--txt-color);
     line-height: 1.5;
     max-width: 280px; /* Constrains the text width to match the mockup */
     margin: 0;
