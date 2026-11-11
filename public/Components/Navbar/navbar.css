@@ -29,7 +29,7 @@ body {
     width:100%;
     position: sticky;
     top:0;
-    z-index: 10000;
+    z-index: 1000000;
 }
 
 /* --------------------------- */
@@ -409,7 +409,7 @@ body {
     color: var(--bg-color);
     padding: 1rem;
     border-radius: 0.6rem;
-    z-index: 100;
+    z-index: 10000;
     box-shadow: 0 0.8rem 1.6rem var(--lan-shadow);
 
     opacity: 0;
