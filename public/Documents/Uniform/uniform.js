@@ -41,7 +41,7 @@ document.addEventListener('click', () => {
 const unitJsonMap = {
   "landforce": "/data/uniform/main/landforce.json",
   "airforce": "/data/uniform/main/aircorp.json",
-  "broadsword": "/data/uniform/main/broadsword.json"
+  // "broadsword": "/data/uniform/main/broadsword.json"
 };
 
 // =========================================
