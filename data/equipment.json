@@ -30,7 +30,7 @@
             },
             {
                 "qualName": "PISTOLS",
-                "desc": ["NOT IN MARINES OR BROADSWORD = NONE<br>Basic Boat License = ALL except CB90<br>Heavy Boat License = ALL<br>Breadsword = RHIB 500 and 7m RIB ONLY"],
+                "desc": ["ANY"],
                 "criteria": "(recommended to use 9mm for easier logistics)"
             },
             {
